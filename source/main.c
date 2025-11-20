@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:12:01 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/19 17:35:27 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/11/20 10:54:03 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main()
     t_token *tokens;
     t_env *env;
     int status;
-    pid_t pid;
+    // pid_t pid;
 
 
     env = NULL;
@@ -83,15 +83,15 @@ int main()
         }
         prompt(E_PROMPT_MAIN);
         // Crear un nuevo proceso para manejar la línea
-        pid = fork();
-        if (pid < 0)
-        {
-            perror("fork");
-            continue;
-        }
-        else if (pid == 0)
-        {
-    		child_signal_config();
+        // pid = fork();
+        // if (pid < 0)
+        // {
+        //     perror("fork");
+        //     continue;
+        // }
+        // else if (pid == 0)
+        // {
+    	// 	child_signal_config();
             // Separar operadores pegados al texto
             char *separated_line = separate_operators(line);
             if (separated_line)
@@ -104,9 +104,9 @@ int main()
             if ((status = parse_commands_new(&tokens)) == 0)
                 status = bash_execute(tokens, env);
             update_exit_status(status);
-        }
-        else
-            waitpid(pid, NULL, 0);
+        // }
+        // else
+        //     waitpid(pid, NULL, 0);
     }
     return (EXIT_SUCCESS);
 }

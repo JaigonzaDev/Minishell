@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:12:34 by mergarci          #+#    #+#             */
-/*   Updated: 2025/10/29 19:14:15 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:45:32 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,15 @@ typedef enum e_expect
     E_STATE_EXPECT_RED,
     E_STATE_EXPECT_PIPE,
     E_STATE_EXPECT_FILENAME,
+    E_STATE_EXPECT_DELIMITER,
 } t_expect;
 // t_env definido en environment.h
 
+typedef enum e_error
+{
+    E_ERROR_UNEXPECTED,
+    E_ERROR_MISSING_FILE,
+} t_error;
 typedef struct s_group
 {
     t_io io; 
@@ -135,4 +141,5 @@ void debug(t_token *tokens);
 void delete_node(t_token **tokens, t_token **tmp);
 void free_token_list(t_token *tokens);
 char *separate_operators(char *input);
+int is_operator(t_token token);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:32:11 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/19 17:25:40 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:57:20 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,16 @@ static void mark_redirection_file(t_token *redirect_token, t_token *file_token, 
     redirect_token->type = redirect_type;
     
     // Marcar el siguiente token como archivo
-    file_token->type = E_FILE;
-    
-    // Configurar I/O según el tipo de redirección
-	if ((redirect_type == E_REDIRECT_OUT) || (redirect_type == E_REDIRECT_APPEND))
-	    file_token->exec_group.io = E_STDOUT;
-	else if ((redirect_type == E_REDIRECT_IN) || (redirect_type == E_REDIRECT_HEREDOC))
-        file_token->exec_group.io = E_STDIN;
+    if (!is_operator(*file_token))
+    {
+         file_token->type = E_FILE;
+     
+        // Configurar I/O según el tipo de redirección
+	    if ((redirect_type == E_REDIRECT_OUT) || (redirect_type == E_REDIRECT_APPEND))
+	        file_token->exec_group.io = E_STDOUT;
+	    else if ((redirect_type == E_REDIRECT_IN) || (redirect_type == E_REDIRECT_HEREDOC))
+            file_token->exec_group.io = E_STDIN;
+    }
 }
 
 /*
@@ -70,8 +73,12 @@ static void process_redirections(t_token *tokens)
             current->type = redirect_type;
         if (redirect_type && current->next && identify_redirection(current->next->token) == 0)
         {
-            mark_redirection_file(current, current->next, redirect_type);
-            current = current->next; // Saltar el archivo
+            if (redirect_type == E_REDIRECT_HEREDOC && current->next->next)
+                mark_redirection_file(current, current->next->next, redirect_type);
+            else
+                mark_redirection_file(current, current->next, redirect_type);
+            if (!is_operator(*current->next))
+                current = current->next; // Saltar el archivo
         }
         
         current = current->next;
@@ -168,12 +175,19 @@ static void process_commands_and_args(t_token *tokens)
     }
 }
 
-int syntax_error(char *token_value)
+int syntax_error(char *token_value, int type)
 {
-    fprintf(stderr, "minishell: syntax error near unexpected token `%s'\n", token_value);
-    // En tu minishell, aquí harías: set_exit_code(2);
-    exit (1);
-    // return (2); // 1 = Error
+    if (type == E_ERROR_UNEXPECTED)
+    {
+        fprintf(stderr, "minishell: syntax error near unexpected token `%s'\n", token_value);
+        return (258);
+    }
+    else if (type == E_ERROR_MISSING_FILE)
+    {
+        fprintf(stderr, "minishell: %s: No such File or Directory \n", token_value);
+        return (1);
+    }
+    return (1);
 }
 int is_redirection(t_token token)
 {
@@ -226,14 +240,19 @@ int correct_syntax(t_token *tokens)
             else if (is_redirection(*current))
                 state = E_STATE_EXPECT_FILENAME;
             else if (current->type == E_PIPE)
-                return (syntax_error(current->token));
+                return (syntax_error(current->token, E_ERROR_UNEXPECTED));
         }
         else if (state == E_STATE_EXPECT_ARG)
         {
             if (is_word(current->type))
                 state = E_STATE_EXPECT_ARG;
             else if (is_redirection(*current))
-                state = E_STATE_EXPECT_FILENAME;
+            {
+                if (current->type == E_REDIRECT_HEREDOC)
+                    state = E_STATE_EXPECT_DELIMITER;
+                else
+                    state = E_STATE_EXPECT_FILENAME;
+            }
             else if (current->type == E_PIPE)
                 state = E_STATE_EXPECT_CMD;
         }
@@ -241,20 +260,25 @@ int correct_syntax(t_token *tokens)
         {
             if (current->type == E_FILE)
             {
-                if (open(current->token, O_RDONLY) == -1)
-                    return (syntax_error("No such File or Directory"));
+                if (current->exec_group.io == E_STDIN && open(current->token, O_RDONLY) == -1)
+                    return (syntax_error(current->token, E_ERROR_MISSING_FILE));
             }
             if (is_word(current->type))
                 state = E_STATE_EXPECT_ARG;
             else if (is_operator(*current))
-                return (syntax_error(current->token));
+                return (syntax_error(current->token, E_ERROR_UNEXPECTED));
             else if (current->type == E_PIPE)
                 state = E_STATE_EXPECT_CMD;
+        }
+        else if (state == E_STATE_EXPECT_DELIMITER)
+        {
+            if (is_word(current->type))
+                state = E_STATE_EXPECT_FILENAME;
         }
         current = current->next;
     }
     if (state == E_STATE_EXPECT_FILENAME || state == E_STATE_EXPECT_CMD)
-        return (syntax_error("newline"));
+        return (syntax_error("newline", E_ERROR_UNEXPECTED));
     return (0);
 }
 
@@ -274,6 +298,7 @@ int parse_commands_new(t_token **tokens)
     
     // Paso 3: Identificar comandos y argumentos
     process_commands_and_args(*tokens);
+    debug_parsing(*tokens);
 
     // Paso 4: Check syntax (returns exit code)
     return (correct_syntax(*tokens));
