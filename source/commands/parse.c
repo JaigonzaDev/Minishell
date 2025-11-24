@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:32:11 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/20 17:57:20 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/11/24 09:44:12 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,7 +298,7 @@ int parse_commands_new(t_token **tokens)
     
     // Paso 3: Identificar comandos y argumentos
     process_commands_and_args(*tokens);
-    debug_parsing(*tokens);
+    // debug_parsing(*tokens);
 
     // Paso 4: Check syntax (returns exit code)
     return (correct_syntax(*tokens));
