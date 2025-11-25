@@ -213,6 +213,11 @@ void case_dollar(char **line, t_token **token, t_env *env)
 		ft_putchar(**line, &var);
 		(*line)++;
 	}
+	if (var == NULL)
+	{
+		ft_putchar('$', &(*token)->token);
+		return;
+	}
 	// Buscar el valor de la variable en las variables de entorno
 	value = search_env_var(var, env);
 	if (value != NULL)

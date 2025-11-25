@@ -13,16 +13,16 @@ void debug(t_token *tokens)
 
 const char *prompt(int type)
 {
-    static int flag = 0;
-    if (errno == EINTR && flag == 0)
-    {
-        // rl_on_new_line();
-        // rl_replace_line("", 0);
-        // write(1, "", 1);
-        errno = 0;
-        flag++;
-        return "";
-    }
+    // static int flag = 0;
+    // if (errno == EINTR && flag == 0)
+    // {
+    //     // rl_on_new_line();
+    //     // rl_replace_line("", 0);
+    //     // write(1, "", 1);
+    //     errno = 0;
+    //     flag++;
+    //     return "";
+    // }
     if (type == E_PROMPT_MAIN)
         return "bash-mini$ ";
     else if (type == E_PROMPT_SQUOTE)

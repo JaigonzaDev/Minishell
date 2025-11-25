@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:12:01 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/24 18:32:18 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/11/25 17:39:57 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ char *read_line(int type)
                 errno = 0;
             }
             else
-            {
-                // perror("readline");
                 exit(EXIT_FAILURE);
-            }
         }
         break;
     }
@@ -57,13 +54,15 @@ int bash_execute(t_token *tokens, t_env *env)
 	// update_exit_status(status);
 }
 
-int main()
+int main(int argc, char **argv, char **envp)
 {
     char *line;
     t_token *tokens;
     t_env *env;
     int status;
-    pid_t pid;
+    // pid_t pid;
+    (void)argc;
+    (void)argv;
 
 
     env = NULL;
@@ -72,22 +71,23 @@ int main()
 	main_signal_config();
     while ((line = read_line(E_PROMPT_MAIN)))
     {
+        env_save(envp, &env);
         // Si la línea empieza por '#', se ignora
         if (line[0] == '#')
         {
             free(line);
             // continue;
         }
-        // // Crear un nuevo proceso para manejar la línea
-        pid = fork();
-        if (pid < 0)
-        {
-            perror("fork");
-            // continue;
-        }
-        else if (pid == 0)
-        {
-    		child_signal_config();
+        // // // Crear un nuevo proceso para manejar la línea
+        // pid = fork();
+        // if (pid < 0)
+        // {
+        //     perror("fork");
+        //     // continue;
+        // }
+        // else if (pid == 0)
+        // {
+    	// 	child_signal_config();
             // Separar operadores pegados al texto
 
             char *separated_line = separate_operators(line);
@@ -102,13 +102,14 @@ int main()
                 debug_parsing(tokens);
                 status = bash_execute(tokens, env);
             }
-            exit (status);
-        }
-        else
-        {
-            waitpid(pid, &status, 0); // Esperar al hijo
-            update_exit_status(WEXITSTATUS(status)); // Actualizar el estado de salida{
-        }
+        //     exit (status);
+        // }
+        // else
+        // {
+        //     waitpid(pid, &status, 0); // Esperar al hijo
+        //     update_exit_status(WEXITSTATUS(status)); // Actualizar el estado de salida{
+        // }
+        env_freeall(&env);
     }
     return (EXIT_SUCCESS);
 }

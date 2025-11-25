@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_simple.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 18:00:00 by mergarci          #+#    #+#             */
-/*   Updated: 2025/10/14 20:06:39 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:57:32 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
