@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:12:01 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/25 17:39:57 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/11/26 12:51:21 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,12 @@ int main(int argc, char **argv, char **envp)
                 debug_parsing(tokens);
                 status = bash_execute(tokens, env);
             }
-        //     exit (status);
+            exit (status);
         // }
         // else
         // {
-        //     waitpid(pid, &status, 0); // Esperar al hijo
-        //     update_exit_status(WEXITSTATUS(status)); // Actualizar el estado de salida{
+            // waitpid(pid, &status, 0); // Esperar al hijo
+            // update_exit_status(WEXITSTATUS(status)); // Actualizar el estado de salida{
         // }
         env_freeall(&env);
     }
