@@ -14,6 +14,7 @@
 # define ENVIRONMENT_H
 
 # include "../libs/libft/include/ft_printf.h"
+# include <stdlib.h>
 
 typedef struct s_env
 {

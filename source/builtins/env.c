@@ -16,12 +16,15 @@
 
 void ft_env(t_env *enviroment)
 {
-    // (void)enviroment; // Usar la versión simple por seguridad
-    
-    // env_print_simple();
     t_env *tmp;
+    
+    // Carlos: >Verificar que enviroment no sea NULL<
+    if (!enviroment)
+        return;
+    
     tmp = enviroment;
-    while(tmp->next != NULL)
+    // Carlos: >Cambiar condición para imprimir TODOS los nodos incluyendo el último<
+    while(tmp != NULL)
     {
         printf("%s=%s\n", tmp->var, tmp->content);
         tmp = tmp->next;

@@ -55,8 +55,7 @@ int ft_execute_builtin(char **args, t_env **environment)
     }
     else if (ft_strncmp(args[0], "export", 7) == 0)
     {
-        ft_export(args[1], environment);
-        status = 0;  // export siempre tiene éxito por ahora
+        status = ft_export(args, environment);  // Pasar todo el array args
     }
     else if (ft_strncmp(args[0], "pwd", 4) == 0)
     {

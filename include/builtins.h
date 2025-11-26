@@ -33,7 +33,7 @@ void ft_env(t_env *enviroment);
 void ft_exit(t_env **environment);
 
 //export.c
-void ft_export(char *var, t_env **environment);
+int ft_export(char **args, t_env **environment);
 
 //pwd.c
 void ft_pwd(void);
