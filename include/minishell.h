@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:12:34 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/24 17:53:50 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/11/27 10:56:01 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ typedef struct s_group
     int group;
 }t_group;
 
+typedef struct s_global
+{
+    int last_signal;
+    int shell_mode;
+} t_global;
+extern t_global g_status;
 typedef struct s_token
 {
     char *token;
