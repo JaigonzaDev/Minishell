@@ -16,6 +16,11 @@ void case_squote(char **line, t_token **token)
 	(*line)++;
 	(*token)->lit = 1;
 	// SI CIERRA LA SIMPLE COMILLA
+	if (**line == '$' && ft_strnstr(*line, "\"",ft_strlen(*line)) != NULL)
+	{
+		ft_putchar('\'', &(*token)->token);
+		return;
+	}
 	if (ft_strnstr(*line, "\'",ft_strlen(*line)) != NULL)
 	{
 		while (**line != '\'')
@@ -202,6 +207,13 @@ void case_dollar(char **line, t_token **token, t_env *env)
 	char *var;
 	char *value;
 
+	if (*(*line + 1) == '\"')
+	{
+		ft_putchar('$', &(*token)->token);
+		// ft_putchar('\"', &(*token)->token);
+		// (*line)++;
+		return;
+	}
 	(*line)++;
 	// if (**line == '(')
 	// {
@@ -236,6 +248,12 @@ void case_dollar(char **line, t_token **token, t_env *env)
 	// 	free(var);
 	// 	return ;
 	// }
+	if (**line == '\'')
+	{
+		ft_putchar('$', &(*token)->token);
+		ft_putchar(**line, &(*token)->token);
+		return;
+	}
 	if (**line == '?')
 	{
 		// Dejar $? sin expandir para expansión tardía
@@ -246,9 +264,9 @@ void case_dollar(char **line, t_token **token, t_env *env)
 	}
 	// Obtener el nombre de la variable
 	var = NULL;
-	while (*(*line + 1) != ' ' && *(*line + 1) != '\t' && *(*line + 1) != '\0' )
+	while (*(*line + 1) != ' ' && *(*line + 1) != '\t' && *(*line + 1) != '\0' && *(*line + 1) != '\'')
 	{
-		if ((*token)->lit == 1 && *(*line + 1) == '\"')
+		if (((*token)->lit == 1 && *(*line + 1) == '\"'))
 			break;
 		ft_putchar(**line, &var);
 		(*line)++;
@@ -266,6 +284,8 @@ void case_dollar(char **line, t_token **token, t_env *env)
 	{
 		if (ft_putstr(value, &(*token)->token) == -1)
 		{
+			if (ft_strnstr(*line, "\"",ft_strlen(*line)) != NULL && **line == '\'')
+				ft_putchar('\'', &(*token)->token);
 			free(var);
 			return; // Error de memoria
 		}
