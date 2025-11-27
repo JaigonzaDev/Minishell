@@ -19,16 +19,25 @@ char *read_line(int type) {
   char *buf = NULL;
   // (void)type;
 
-  buf = readline(prompt(type));
-  if (g_status.last_signal == SIGQUIT) {
-    // GUARDAR EXIT(131)
-  } else if (g_status.last_signal == SIGINT) {
-    // GUARDAR EXIT(130)
-  } else if (feof(stdin))
-    exit(EXIT_SUCCESS);
-  // Guarda en el buffer
-  if (buf[0] != '\0')
-    add_history(buf);
+  if (isatty(STDIN_FILENO)) {
+    buf = readline(prompt(type));
+    if (g_status.last_signal == SIGQUIT) {
+      // GUARDAR EXIT(131)
+    } else if (g_status.last_signal == SIGINT) {
+      // GUARDAR EXIT(130)
+    } else if (feof(stdin))
+      exit(EXIT_SUCCESS);
+    // Guarda en el buffer
+    if (buf && buf[0] != '\0')
+      add_history(buf);
+  } else {
+    buf = ft_gnl(STDIN_FILENO, NULL);
+    if (buf) {
+      int len = ft_strlen(buf);
+      if (len > 0 && buf[len - 1] == '\n')
+        buf[len - 1] = '\0';
+    }
+  }
   return (buf);
 }
 
