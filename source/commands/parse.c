@@ -258,12 +258,14 @@ int correct_syntax(t_token *tokens)
         }
         else if (state == E_STATE_EXPECT_FILENAME)
         {
+            // CARLOS: >Aceptar cualquier palabra o token sin tipo como nombre de archivo<
             if (current->type == E_FILE)
             {
                 if (current->exec_group.io == E_STDIN && open(current->token, O_RDONLY) == -1)
                     return (syntax_error(current->token, E_ERROR_MISSING_FILE));
+                state = E_STATE_EXPECT_ARG;
             }
-            if (is_word(current->type))
+            else if (is_word(current->type) || current->type == 0)
                 state = E_STATE_EXPECT_ARG;
             else if (is_operator(*current))
                 return (syntax_error(current->token, E_ERROR_UNEXPECTED));

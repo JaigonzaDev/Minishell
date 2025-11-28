@@ -21,7 +21,7 @@
 // Function prototypes for all builtins
 
 //cd.c
-void ft_cd(char *path, t_env **environment);
+int ft_cd(char *path, t_env **environment);
 
 //echo.c
 void ft_echo(char **args);

@@ -106,14 +106,13 @@ int main(int argc, char **argv, char **envp) {
         else if (WTERMSIG(status) == SIGQUIT)
           write(STDOUT_FILENO, "Quit: 3\n", 8);
       }
-      update_exit_status(
-          WEXITSTATUS(status)); // Actualizar el estado de salida{
+      // CARLOS: >Actualizar el estado de salida después de cada comando<
+      update_exit_status(WEXITSTATUS(status));
       main_signal_config();
     }
     // CARLOS: >QUITAR env_freeall de aquí para no liberar en cada iteración<
   }
-  // CARLOS: >Mover env_freeall DESPUÉS del bucle para liberar al final del
-  // programa<
+  // CARLOS: >Mover env_freeall DESPUÉS del bucle para liberar al final del programa<
   env_freeall(&env);
   return (EXIT_SUCCESS);
 }

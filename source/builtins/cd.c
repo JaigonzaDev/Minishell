@@ -40,20 +40,21 @@ static void update_pwd_env(t_env **environment)
 	free(cwd);
 }
 
-void ft_cd(char *path, t_env **environment)
+int ft_cd(char *path, t_env **environment)
 {
 	if (path == NULL || environment == NULL || *environment == NULL)
 	{
 		ft_printf("cd: missing argument\n");
-		return;
+		return (1);
 	}
 	
 	if (chdir(path) == -1)
 	{
 		ft_printf("cd: %s: No such file or directory\n", path);
-		return;
+		return (1);
 	}
 	
 	// Actualizar la variable PWD en el environment
 	update_pwd_env(environment);
+	return (0);
 }

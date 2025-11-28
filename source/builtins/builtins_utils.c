@@ -35,8 +35,10 @@ int ft_execute_builtin(char **args, t_env **environment)
     
     if (ft_strncmp(args[0], "cd", 3) == 0)
     {
-        ft_cd(args[1], environment);
-        status = 0;  // cd siempre retorna 0 por ahora
+        status = ft_cd(args[1], environment);
+
+        //status = 0;   cd siempre retorna 0 por ahora
+
     }
     else if (ft_strncmp(args[0], "echo", 5) == 0)
     {
@@ -76,6 +78,6 @@ int ft_execute_builtin(char **args, t_env **environment)
         status = ft_false();
     }
     
-    update_exit_status(status);
+    //update_exit_status(status);
     return (status);
 }
