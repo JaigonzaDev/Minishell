@@ -40,12 +40,37 @@ static void update_pwd_env(t_env **environment)
 	free(cwd);
 }
 
+static char *get_home_dir(t_env *environment)
+{
+	t_env *current;
+	
+	current = environment;
+	while (current)
+	{
+		if (ft_strncmp(current->var, "HOME", 5) == 0)
+			return (current->content);
+		current = current->next;
+	}
+	return (NULL);
+}
+
 int ft_cd(char *path, t_env **environment)
 {
-	if (path == NULL || environment == NULL || *environment == NULL)
-	{
-		ft_printf("cd: missing argument\n");
+	char *target_path;
+	
+	if (environment == NULL || *environment == NULL)
 		return (1);
+	
+	// Si no hay path, ir a HOME
+	if (path == NULL)
+	{
+		target_path = get_home_dir(*environment);
+		if (target_path == NULL)
+		{
+			ft_printf("cd: HOME not set\n");
+			return (1);
+		}
+		path = target_path;
 	}
 	
 	if (chdir(path) == -1)
