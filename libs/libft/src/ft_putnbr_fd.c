@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_putnbr_fd.c									 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/26 21:43:02 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/26 21:43:02 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_putnbr_fd.c										:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/26 21:43:02 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/26 21:43:02 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	ft_write_num(int fd, int num_aux, int is_negative, int is_overflow)
 void	ft_putnbr_fd(int n, int fd)
 
 {
-	int		is_overflow;
-	int		is_negative;
-	int		num_aux;
+	int is_overflow;
+	int is_negative;
+	int num_aux;
 
 	is_negative = 0;
 	is_overflow = 0;
@@ -93,7 +93,7 @@ void	ft_putnbr_fd(int n, int fd)
 /*int main(void)
 {
 	int fd;
-	int n = 164189; 
+	int n = 164189;
 
 	fd = open("test.txt", O_TRUNC | O_RDWR | O_CREAT, 0600);
 	if (fd >= 0)

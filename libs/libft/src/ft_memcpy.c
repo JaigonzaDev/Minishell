@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_memcpy.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/14 11:07:17 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/15 14:18:36 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_memcpy.c										:+:		:+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/14 11:07:17 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/15 14:18:36 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	printf("The string: %s\n", str1);
 	memcpy(dst1, str1, 10);
 	printf("New string: %s\n", dst1 );
-	
+
 	*str1 = "abcdef";
 	printf("\nstr1: %s\n", str1);
 	printf("The string: %s\n", str1);

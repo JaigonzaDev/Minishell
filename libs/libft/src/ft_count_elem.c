@@ -13,7 +13,7 @@
 //#include "libft.h"
 #include <stdio.h>
 
-/*Counts the non-null pointers in a NULL-terminated array of pointers 
+/*Counts the non-null pointers in a NULL-terminated array of pointers
 (returning 0 if the array itself is NULL).
 BE CAREFUL!! You will have to cast the pointer:
 ft_count_elem((const void * const*)argv)*/
@@ -30,7 +30,7 @@ int	ft_count_elem(const void *const *ptr)
 	return (len);
 }
 
-/*Counts the non-null pointers in a NULL-terminated array of pointers 
+/*Counts the non-null pointers in a NULL-terminated array of pointers
 (returning 0 if the array itself is NULL).
 BE CAREFUL!! You will have to cast the pointer:
 ft_count_elem((const void * const*)argv)*/

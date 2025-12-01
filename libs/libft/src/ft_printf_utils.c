@@ -46,11 +46,11 @@ int	ft_placeholder_u(va_list vargs)
 	return (n_written);
 }
 
-/*Print a string and it returns number of character 
+/*Print a string and it returns number of character
 printed*/
 int	ft_print_str(char *str)
 {
-	int		n;
+	int	n;
 
 	n = 0;
 	while (str[n])

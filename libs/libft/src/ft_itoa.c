@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_itoa.c										  :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/25 18:01:44 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/25 18:01:44 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_itoa.c											:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/25 18:01:44 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/25 18:01:44 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*ft_strnbr(int digits, int num_aux, int is_neg, int is_overflow)
 	return (ptr);
 }
 
-/* Using malloc(3), generate a string that represents the integer value 
+/* Using malloc(3), generate a string that represents the integer value
 received as an argument. Negative numbers have to be managed.*/
 char	*ft_itoa(int n)
 {
@@ -88,5 +88,5 @@ char	*ft_itoa(int n)
 	int n = 1000034;
 	str = ft_itoa(n);
 	printf("%d\n%s\n", n, str);
-	return 0;
+	return (0);
 }*/

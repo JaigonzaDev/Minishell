@@ -13,78 +13,50 @@
 #include "builtins.h"
 #include "minishell.h"
 
-// void ft_echo(char **args)
-// {
-// 	int i;
-// 	bool newline;
-		
-// 	if (args == NULL)
-// 	{
-// 		ft_printf("\n");
-// 		return;
-// 	}
-	
-// 	i = 1; // Empezar desde el primer argumento (args[0] es "echo")
-// 	newline = TRUE; // Por defecto, imprimir nueva línea
-	
-// 	// Verificar si el primer argumento es "-n"
-// 	if (args[i] != NULL && ft_strncmp(args[i], "-n", 2) == 0)
-// 	{
-// 		newline = FALSE;
-// 		i++; // Saltar el "-n"
-// 	}
-	
-// 	// Imprimir todos los argumentos
-// 	while (args[i])
-// 	{
-// 		ft_printf("%s", args[i]);
-// 		if (args[i + 1] != NULL)
-// 			ft_printf(" ");
-// 		i++;
-// 	}
-// 	if (newline)
-// 		ft_printf("\n");
-// }
-
-void ft_echo(char **args)
+/*
+** Check for newline flag
+*/
+static bool	check_newline_flag(char *arg)
 {
-    int i;
-    bool newline;
+	int	j;
 
-    if (args == NULL || args[0] == NULL)
-    {
-        ft_printf("\n");
-        return;
-    }
+	if (ft_strncmp(arg, "-n", 2) != 0)
+		return (false);
+	j = 2;
+	while (arg[j] == 'n')
+		j++;
+	if (arg[j] == '\0')
+		return (true);
+	return (false);
+}
 
-    i = 1; // Empezar desde el primer argumento (args[0] es "echo")
-    newline = TRUE; // Por defecto, imprimir nueva línea
+/*
+** Echo command
+*/
+void	ft_echo(char **args)
+{
+	int i;
+	bool newline;
 
-    // Manejar múltiples opciones "-n"
-    while (args[i] != NULL && ft_strncmp(args[i], "-n", 2) == 0)
-    {
-        int j = 2;
-        while (args[i][j] == 'n') // Verificar si todos los caracteres son 'n'
-            j++;
-        if (args[i][j] == '\0') // Si es una opción válida "-n"
-        {
-            newline = FALSE;
-            i++;
-        }
-        else
-            break; // Salir si no es una opción válida
-    }
-
-    // Imprimir todos los argumentos restantes
-    while (args[i])
-    {
-        ft_printf("%s", args[i]);
-        if (args[i + 1] != NULL)
-            ft_printf(" ");
-        i++;
-    }
-
-    // Imprimir nueva línea si corresponde
-    if (newline)
-        ft_printf("\n");
+	if (args == NULL || args[0] == NULL)
+	{
+		ft_printf("\n");
+		return ;
+	}
+	i = 1;
+	newline = TRUE;
+	while (args[i] != NULL && check_newline_flag(args[i]))
+	{
+		newline = FALSE;
+		i++;
+	}
+	while (args[i])
+	{
+		ft_printf("%s", args[i]);
+		if (args[i + 1] != NULL)
+			ft_printf(" ");
+		i++;
+	}
+	if (newline)
+		ft_printf("\n");
 }

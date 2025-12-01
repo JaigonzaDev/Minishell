@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_memmove.c									   :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/14 15:42:56 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/15 15:35:44 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_memmove.c										:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/14 15:42:56 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/15 15:35:44 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* Function copies len bytes from string src to string dst. The two strings 
+/* Function copies len bytes from string src to string dst. The two strings
 may overlap; the copy is always done in a non-destructive manner.*/
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -39,7 +39,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 /*int main(void)
 {
-char str[] = "abcdefghijk";
+char	str[] = "abcdefghijk";
 	char str2[] = "abcdefghijk";
 	size_t size = 3;
 	int i = 2;

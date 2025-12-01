@@ -11,25 +11,20 @@
 /* ************************************************************************** */
 
 #ifndef ENVIRONMENT_H
-# define ENVIRONMENT_H
+#define ENVIRONMENT_H
 
-# include "../libs/libft/include/ft_printf.h"
-# include <stdlib.h>
+#include "../libs/libft/include/ft_printf.h"
+#include <stdlib.h>
 
-typedef struct s_env
-{
-    char    *var;
-    char    *content;
-    struct s_env *next;
+typedef struct s_env {
+  char *var;
+  char *content;
+  struct s_env *next;
 } t_env;
 
-
-//environment.c
-void env_save(char **envp, t_env **myEnvironment);
+void env_save(char **envp, t_env **my_environment);
 t_env *env_free(t_env *env);
 void env_freeall(t_env **env);
-
-// Funciones simples y seguras para environment
 void env_save_simple(char **envp);
 void env_print_simple(void);
 void env_free_simple(void);

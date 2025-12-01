@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_lstnew_bonus.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/27 11:42:34 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/27 11:42:34 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_lstnew_bonus.c										:+:		:+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/27 11:42:34 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/27 11:42:34 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* Create a new node using malloc(3). The member variable 'content' is 
+/* Create a new node using malloc(3). The member variable 'content' is
 initialized with the content of the parameter 'content'. The 'next' variable,
 with NULL. */
 t_list	*ft_lstnew(void *content)
@@ -33,6 +33,6 @@ t_list	*ft_lstnew(void *content)
 	lista = ft_lstnew((void *)"hola");
 
 	printf("%s", (char *)lista->content);
-		
+
 	return (1);
 }*/

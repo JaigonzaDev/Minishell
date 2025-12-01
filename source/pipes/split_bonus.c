@@ -12,8 +12,9 @@
 
 #include "pipes.h"
 
-/*It counts number of arguements depending on the space and quote
-characters*/
+/*
+** Count arguments
+*/
 static int	ft_count_arg(char *str)
 {
 	int		cont;
@@ -40,7 +41,9 @@ static int	ft_count_arg(char *str)
 	return (cont);
 }
 
-/*It allocates the memory and save the word*/
+/*
+** Save word
+*/
 static char	*ft_save_word(int len, int init, char **str)
 {
 	char	*str_aux;
@@ -54,7 +57,20 @@ static char	*ft_save_word(int len, int init, char **str)
 	return (str_aux);
 }
 
-/*It gets the next word of the input string*/
+/*
+** Update quote status
+*/
+static void	update_quote_status(char c, bool *quote_found)
+{
+	if (c == '\'' && !*quote_found)
+		*quote_found = true;
+	else if (c == '\'' && *quote_found)
+		*quote_found = false;
+}
+
+/*
+** Get next word
+*/
 static char	*ft_get_word(char **str)
 {
 	int		end;
@@ -68,13 +84,14 @@ static char	*ft_get_word(char **str)
 		(*str)++;
 	while ((*str)[end])
 	{
-		if (((*str)[end]) == '\'' && !quote_found)
+		if (((*str)[end]) == '\'')
 		{
-			init = end + 1;
-			quote_found = true;
+			if (!quote_found)
+				init = end + 1;
+			update_quote_status((*str)[end], &quote_found);
+			if (quote_found == false)
+				break ;
 		}
-		else if (((*str)[end]) == '\'' && quote_found)
-			break ;
 		if (((*str)[end]) == ' ' && !quote_found)
 			break ;
 		end++;
@@ -82,8 +99,9 @@ static char	*ft_get_word(char **str)
 	return (ft_save_word(end - init, init, str));
 }
 
-/*Function that splits a string depending the spaces. It takes care that if 
-there are quotes, not to split depending on the spaces.*/
+/*
+** Split string for bash
+*/
 char	**ft_split_bash(char *str)
 {
 	char	**result;

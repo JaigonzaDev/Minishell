@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_atoi.c										  :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/02/27 14:56:36 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/04/02 11:35:25 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_atoi.c											:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/02/27 14:56:36 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/04/02 11:35:25 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int	ft_atoi(const char *str)
 	char str[] = " -1234ab567";
 	printf("Resultado de \"%s\" con la funcion atoi: %d\n", str, atoi(str));
 	printf("Resultado de \"%s\" con la func ft_atoi: %d\n", str, ft_atoi(str));
-	
+
 	return (0);
 }*/

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_strdup.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/22 17:27:49 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/22 18:06:10 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_strdup.c										:+:		:+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/22 17:27:49 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/22 18:06:10 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* Function allocates sufficient memory for a copy of the string s1, does 
+/* Function allocates sufficient memory for a copy of the string s1, does
 the copy, and returns a pointer to it. */
 char	*ft_strdup(const char *s1)
 {
@@ -37,11 +37,11 @@ char	*ft_strdup(const char *s1)
 }
 
 /*
-int main(void)
+int	main(void)
 {
 	char *ptr = "holi!!";
 	printf("ptr: %s\n", ptr);
 	char *b = ft_strdup(ptr);
 	printf("b: %s\n", b);
-	return 1;
+	return (1);
 }*/

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_split.c										 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/25 16:27:38 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/25 16:27:38 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_split.c											:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/25 16:27:38 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/25 16:27:38 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* Gets the first index where the character is different from the separator 
+/* Gets the first index where the character is different from the separator
 character c */
 static int	ft_ptr_index(char const *s, char c, int i, int num_words)
 {
@@ -22,7 +22,7 @@ static int	ft_ptr_index(char const *s, char c, int i, int num_words)
 }
 
 /* Free memory*/
-static char	**ft_freemem(char	**buffer)
+static char	**ft_freemem(char **buffer)
 {
 	int	size;
 
@@ -59,9 +59,9 @@ static int	ft_count_words(char const *s, char c)
 /* Split by words using c as separator. Free memory if error.*/
 static char	**ft_split_words(char const *s, char c, int num_words, char **dst)
 {
-	int		i;
-	int		ini;
-	int		cont;
+	int	i;
+	int	ini;
+	int	cont;
 
 	cont = 0;
 	i = ft_ptr_index(s, c, 0, num_words);
@@ -85,7 +85,7 @@ static char	**ft_split_words(char const *s, char c, int num_words, char **dst)
 }
 
 /* Reserve an array of strings resulting from separating
-the string 's' into substrings using the character 'c' as a delimiter. 
+the string 's' into substrings using the character 'c' as a delimiter.
 The array must be terminated with a NULL pointer.*/
 char	**ft_split(char const *s, char c)
 {
@@ -102,7 +102,7 @@ char	**ft_split(char const *s, char c)
 
 /*int main()
 {
-	
+
 	char **array;
 	int cont = 0;
 	//char *invalidReadCheck = (char *)malloc(sizeof(char));
@@ -114,6 +114,6 @@ char	**ft_split(char const *s, char c)
 	{
 		printf(".%s.\n", array[cont]);
 		cont++;
-	} 
-	return 0;
+	}
+	return (0);
 }*/

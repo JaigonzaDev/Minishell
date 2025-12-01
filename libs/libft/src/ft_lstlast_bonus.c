@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_lstlast_bonus.c								 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/28 18:56:36 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/04/02 11:41:18 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_lstlast_bonus.c									:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/28 18:56:36 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/04/02 11:41:18 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_list	*ft_lstlast(t_list *lst)
 	ft_lstadd_front(&lista, new);
 	ft_lstadd_front(&lista, aux);
 	printf("Imprimimos lista:\n");
-	ft_print_lst(&lista); 
+	ft_print_lst(&lista);
 	printf("numeros de elementos en la lista: %d\n", ft_lstsize(lista));
 	printf("ultimo nodo:\n");
 	last = ft_lstlast(lista);

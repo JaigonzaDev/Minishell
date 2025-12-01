@@ -12,19 +12,22 @@
 
 #include "pipes.h"
 
-/*Function to create pipe and check any error. It exits if error*/
+/*
+** Create pipe and fork
+*/
 static pid_t	ft_createfd_fork(int *fd)
 {
 	if (pipe(fd) == -1)
 	{
 		perror("pipe");
-		exit (errno);
+		exit(errno);
 	}
 	return (fork());
 }
 
-/*Function to duplicate file descriptors depending on the number
-of the proccess. This function duplicates and closes fd*/
+/*
+** Redirect file descriptors
+*/
 static int	ft_redirect_fd(int *prev_pipe, char **commands, int *fd, int i)
 {
 	int	num_commands;
@@ -51,7 +54,9 @@ static int	ft_redirect_fd(int *prev_pipe, char **commands, int *fd, int i)
 	return (EXIT_SUCCESS);
 }
 
-/*Waits all the PID child and close fds*/
+/*
+** Wait for children and close fds
+*/
 static int	ft_wait_closefd(pid_t *pid, int num_com, int *fd, int *prev_pipe)
 {
 	int	i;
@@ -65,29 +70,45 @@ static int	ft_wait_closefd(pid_t *pid, int num_com, int *fd, int *prev_pipe)
 	return (WEXITSTATUS(status));
 }
 
-/*It manange the pipelines and execute the commands */
+/*
+** Handle child process
+*/
+static int	handle_child(int *files, char **commands, char **envp, int i)
+{
+	int	status;
+	int	fd[2];
+	int	prev_pipe[2];
+
+	prev_pipe[READ] = files[I];
+	prev_pipe[WRITE] = files[O];
+	status = ft_redirect_fd(prev_pipe, commands, fd, i + 2);
+	if (status != 0 || check_exec(commands[i + 2], envp, status) != 0)
+		return (EXIT_FAILURE);
+	ft_closefd(files[O]);
+	ft_closefd(files[I]);
+	return (EXIT_SUCCESS);
+}
+
+/*
+** Pipeline execution
+*/
 int	ft_pipeline(int *files, char **commands, char **envp)
 {
 	int	i;
 	int	fd[2];
 	int	pid[MAX_PIPES];
 	int	prev_pipe[2];
-	int	status;
 
 	prev_pipe[READ] = files[I];
 	prev_pipe[WRITE] = files[O];
-	status = 0;
 	i = -1;
 	while (++i < ft_count_string(commands) - 3)
 	{
 		pid[i] = ft_createfd_fork(fd);
 		if (pid[i] == 0)
 		{
-			status = ft_redirect_fd(prev_pipe, commands, fd, i + 2);
-			if (status != 0 || check_exec(commands[i + 2], envp, status) != 0)
-				return (EXIT_FAILURE);
-			ft_closefd(files[O]);
-			ft_closefd(files[I]);
+			if (handle_child(files, commands, envp, i))
+				exit(EXIT_FAILURE);
 		}
 		else
 			ft_parent_fd(fd, prev_pipe);

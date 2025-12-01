@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_strnstr.c									   :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/22 11:54:01 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/22 13:33:00 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_strnstr.c										:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/22 11:54:01 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/22 13:33:00 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strnstr(const char *src, const char *need, size_t len)
 	char *fun;
 	char *my;
 	size_t n = ft_strlen(largestring);
-	
+
 	fun = strnstr(largestring, smallstring, n);
 	my = ft_strnstr(largestring, smallstring, n);
 	printf("Resultado strnstr: %s\n", fun);

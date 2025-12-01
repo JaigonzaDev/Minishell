@@ -13,17 +13,17 @@
 #include "builtins.h"
 
 /*
- * Built-in true: siempre retorna 0 (éxito)
- */
-int ft_true(void)
+** Built-in true: always returns 0 (success)
+*/
+int	ft_true(void)
 {
-    return (0);
+	return (0);
 }
 
 /*
- * Built-in false: siempre retorna 1 (fallo)
- */
-int ft_false(void)
+** Built-in false: always returns 1 (failure)
+*/
+int	ft_false(void)
 {
-    return (1);
+	return (1);
 }

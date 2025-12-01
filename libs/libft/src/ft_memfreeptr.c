@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-/*Frees the memory of each element of a NULL-terminated array of pointers 
+/*Frees the memory of each element of a NULL-terminated array of pointers
 and always returns NULL*/
 char	**ft_memfree_ptr(void **ptr)
 {
@@ -27,7 +27,7 @@ char	**ft_memfree_ptr(void **ptr)
 	return (NULL);
 }
 
-/*Frees the memory of each element of a NULL-terminated array of strings 
+/*Frees the memory of each element of a NULL-terminated array of strings
 and always returns NULL*/
 char	**ft_memfree_str(char **ptr)
 {

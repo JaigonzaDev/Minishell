@@ -12,17 +12,19 @@
 
 #include "builtins.h"
 
-void ft_pwd(void)
+/*
+** Print current working directory
+*/
+void	ft_pwd(void)
 {
 	char *cwd;
-	
+
 	cwd = getcwd(NULL, 0);
 	if (cwd == NULL)
 	{
 		ft_printf("pwd: error getting current directory\n");
-		return;
+		return ;
 	}
-	
 	ft_printf("%s\n", cwd);
 	free(cwd);
 }

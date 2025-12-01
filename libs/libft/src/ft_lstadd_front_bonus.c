@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_lstadd_front_bonus.c							:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/27 13:05:33 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/04/02 11:36:23 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_lstadd_front_bonus.c							:+:		:+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/27 13:05:33 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/04/02 11:36:23 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	printf("Imprimimos lista:\n");
 	ft_print_lst(&lista);
 	printf("Imprimimos new:\n");
-	ft_print_lst(&new);  
+	ft_print_lst(&new);
 	ft_lstadd_front(&lista, new);
 	printf("Imprimimos lista:\n");
-	ft_print_lst(&lista); 
+	ft_print_lst(&lista);
 
 	return (1);
 }*/

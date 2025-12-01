@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_substr.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/24 19:43:11 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/24 19:43:11 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_substr.c										:+:		:+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/24 19:43:11 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/24 19:43:11 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 The substring starts from index 'start' and has a maximum length 'len'.*/
 char	*ft_substr(char const *s, unsigned int star, size_t len)
 {
-	char		*ptr;
-	size_t		len_src;
+	char	*ptr;
+	size_t	len_src;
 
 	if (!s)
 		return (NULL);
@@ -50,5 +50,5 @@ char	*ft_substr(char const *s, unsigned int star, size_t len)
 	printf("dst: %p, %s %lu\n", dst, dst, ft_strlen(dst));
 	free(dst);
 
-	return 0;
+	return (0);
 }*/

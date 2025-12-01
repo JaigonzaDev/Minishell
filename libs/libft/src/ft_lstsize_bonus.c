@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_lstsize_bonus.c								 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/27 13:56:31 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/27 13:56:31 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_lstsize_bonus.c									:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/27 13:56:31 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/27 13:56:31 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	ft_lstsize(t_list *lst)
 	//printf("Imprimimos lista:\n");
 	//ft_print_lst(&lista);
 	//printf("Imprimimos new:\n");
-	//ft_print_lst(&new);  
+	//ft_print_lst(&new);
 	ft_lstadd_front(&lista, new);
 	printf("Imprimimos lista:\n");
-	ft_print_lst(&lista); 
+	ft_print_lst(&lista);
 	printf("numeros de elementos en la lista: %d\n", ft_lstsize(lista));
 	return (1);
 }*/

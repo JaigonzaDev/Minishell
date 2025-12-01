@@ -54,8 +54,8 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 
 char	*ft_read_gnl(int fd, t_data data, char **str_aux, ssize_t read_bytes)
 {
-	char		*ptr_aux;
-	char		*buffer;
+	char	*ptr_aux;
+	char	*buffer;
 
 	buffer = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
@@ -118,7 +118,7 @@ char	*ft_gnl(int fd, char *limit)
 	fd1 = open("test1.txt", O_RDWR);
 	fd2 = open("test.txt", O_RDWR);
 	//fd = 10000;
- 	if (fd1 != -1 && fd2 != 2)
+	if (fd1 != -1 && fd2 != 2)
 	{
 		aux = get_next_line(fd1);
 		while (aux != NULL)
@@ -131,7 +131,7 @@ char	*ft_gnl(int fd, char *limit)
 			aux = get_next_line(fd1);
 		}
 		free(aux);
-	} 
+	}
 	close(fd1);
 	close(fd2);
 	return (1);

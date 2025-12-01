@@ -61,7 +61,7 @@ int	ft_check_placeholder(char const *s, int *i, va_list vargs)
 	return (cont);
 }
 
-/*Print a character. It needs to know if it's called 
+/*Print a character. It needs to know if it's called
 from c or % placeholder*/
 int	ft_placeholder_c(va_list vargs, char type)
 {
@@ -96,7 +96,7 @@ int	ft_placeholder_p(va_list vargs)
 	unsigned long	dir_ptr;
 
 	n_written = 0;
-	dir_ptr = va_arg(vargs, unsigned long );
+	dir_ptr = va_arg(vargs, unsigned long);
 	if (dir_ptr != 0)
 		n_written = ft_convert(dir_ptr, 'p', n_written);
 	else

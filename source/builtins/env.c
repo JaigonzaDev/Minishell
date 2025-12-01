@@ -11,23 +11,22 @@
 /* ************************************************************************** */
 
 #include "builtins.h"
-#include <stdlib.h>
 #include "minishell.h"
+#include <stdlib.h>
 
-void ft_env(t_env *enviroment)
+/*
+** Print environment variables
+*/
+void	ft_env(t_env *enviroment)
 {
-    t_env *tmp;
-    
-    // Carlos: >Verificar que enviroment no sea NULL<
-    if (!enviroment)
-        return;
-    
-    tmp = enviroment;
-    // Carlos: >Cambiar condición para imprimir TODOS los nodos incluyendo el último<
-    while(tmp != NULL)
-    {
-        printf("%s=%s\n", tmp->var, tmp->content);
-        tmp = tmp->next;
-    }
-}
+	t_env	*tmp;
 
+	if (!enviroment)
+		return ;
+	tmp = enviroment;
+	while (tmp != NULL)
+	{
+		printf("%s=%s\n", tmp->var, tmp->content);
+		tmp = tmp->next;
+	}
+}

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_strtrim.c									   :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/25 11:44:20 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/25 11:44:20 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_strtrim.c										:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/25 11:44:20 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/25 11:44:20 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Removes all characters from the string 'set' from the beginning and end 
-of 's1', until a character not belonging to 'set' is found. The resulting 
-string is returned with a malloc(3) fallback.*/
+/*Removes all characters from the string 'set' from the beginning and end
+of 's1', until a character not belonging to 'set' is found. The resulting
+string is returned with a	malloc(3) fallback.*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	len_s1;
@@ -44,7 +44,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (ft_substr(s1, (unsigned int)ini, end - ini + 1));
 }
 /*
-int main()
+int	main(void)
 {
 	char *str = "";
 	char *set = "";
@@ -52,5 +52,5 @@ int main()
 	//dst = ft_strjoin(str, dst);
 	printf("|%s|", new);
 
-	return 0;
+	return (0);
 }*/

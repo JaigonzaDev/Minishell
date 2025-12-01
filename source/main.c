@@ -13,101 +13,109 @@
 #include "minishell.h"
 #include "pipes.h"
 
-t_global g_status;
+t_global	g_status;
 
-char *read_line(int type) {
-  char *buf = NULL;
-  // (void)type;
+/*
+** Read line from input
+*/
+char	*read_line(int type)
+{
+	char	*buf;
+	int		len;
 
-  if (isatty(STDIN_FILENO)) {
-    buf = readline(prompt(type));
-    if (g_status.last_signal == SIGQUIT) {
-      // GUARDAR EXIT(131)
-    } else if (g_status.last_signal == SIGINT) {
-      // GUARDAR EXIT(130)
-    } else if (feof(stdin))
-      exit(EXIT_SUCCESS);
-    // Guarda en el buffer
-    if (buf && buf[0] != '\0')
-      add_history(buf);
-  } else {
-    buf = ft_gnl(STDIN_FILENO, NULL);
-    if (buf) {
-      int len = ft_strlen(buf);
-      if (len > 0 && buf[len - 1] == '\n')
-        buf[len - 1] = '\0';
-    }
-  }
-  return (buf);
+	buf = NULL;
+	if (isatty(STDIN_FILENO))
+	{
+		buf = readline(prompt(type));
+		if (g_status.last_signal == SIGQUIT)
+			(void)0;
+		else if (g_status.last_signal == SIGINT)
+			(void)0;
+		else if (feof(stdin))
+			exit(EXIT_SUCCESS);
+		if (buf && buf[0] != '\0')
+			add_history(buf);
+	}
+	else
+	{
+		buf = ft_gnl(STDIN_FILENO, NULL);
+		if (buf)
+		{
+			len = ft_strlen(buf);
+			if (len > 0 && buf[len - 1] == '\n')
+				buf[len - 1] = '\0';
+		}
+	}
+	return (buf);
 }
 
-int bash_execute(t_token *tokens, t_env *env) {
-  int status;
+/*
+** Execute bash command
+*/
+int	bash_execute(t_token *tokens, t_env *env)
+{
+	int	status;
 
-  if (!tokens)
-    return (1);
-
-  // Ejecutar usando el sistema de pipes
-  status = execute_pipeline(tokens, env);
-
-  return (status);
-  // // Actualizar status en variable global para $?
-  // update_exit_status(status);
+	if (!tokens)
+		return (1);
+	status = execute_pipeline(tokens, env);
+	return (status);
 }
 
-int main(int argc, char **argv, char **envp) {
-  char *line;
-  t_token *tokens;
-  t_env *env;
-  int status;
-  (void)argc;
-  (void)argv;
+/*
+** Process line input
+*/
+static void	process_line(char *line, t_env *env)
+{
+	t_token	*tokens;
+	int		status;
+	char	*separated_line;
 
-  env = NULL;
-  tokens = NULL;
-  line = NULL;
-  main_signal_config();
-  // CARLOS: >Mover env_save antes bucle para que las variables de export
-  // persistan<
-  env_save(envp, &env);
-  while ((line = read_line(E_PROMPT_MAIN))) {
-    // Si la línea empieza por '#', se ignora
-    if (line[0] == '#') {
-      free(line);
-      continue;
-    }
-    // debug_parsing(tokens);
+	if (line[0] == '#')
+	{
+		free(line);
+		return ;
+	}
+	separated_line = separate_operators(line);
+	if (separated_line)
+	{
+		free(line);
+		line = separated_line;
+	}
+	tokens = bash_split(&line, env);
+	tokens = apply_word_splitting(tokens);
+	status = parse_commands_new(&tokens);
+	if (status == 0)
+	{
+		status = bash_execute(tokens, env);
+		update_exit_status(status);
+		main_signal_config();
+	}
+	else
+		update_exit_status(status);
+	free_token_list(tokens);
+}
 
-    // Separar operadores pegados al texto
-    char *separated_line = separate_operators(line);
-    if (separated_line) {
-      free(line);
-      line = separated_line;
-    }
-    tokens = bash_split(&line, env);
-    
-    // Aplicar word splitting (dividir tokens con espacios no literales)
-    tokens = apply_word_splitting(tokens);
-    
-    if ((status = parse_commands_new(&tokens)) == 0) {
-      // debug_parsing(tokens);
+/*
+** Main function
+*/
+int	main(int argc, char **argv, char **envp)
+{
+	char	*line;
+	t_env	*env;
 
-      // Ejecutar comando (bash_execute maneja forks internos para comandos
-      // externos)
-      status = bash_execute(tokens, env);
-
-      // Actualizar el estado de salida después de cada comando
-      update_exit_status(status);
-      main_signal_config();
-    } else {
-      // Error de sintaxis: actualizar exit status (bash usa 2)
-      update_exit_status(status);
-    }
-    free_token_list(tokens);
-    // CARLOS: >QUITAR env_freeall de aquí para no liberar en cada iteración<
-  }
-  // CARLOS: >Mover env_freeall DESPUÉS del bucle para liberar al final del
-  // programa<
-  env_freeall(&env);
-  return (EXIT_SUCCESS);
+	(void)argc;
+	(void)argv;
+	env = NULL;
+	main_signal_config();
+	env_save(envp, &env);
+	while (1)
+	{
+		line = read_line(E_PROMPT_MAIN);
+		if (!line)
+			break ;
+		process_line(line, env);
+	}
+	env_freeall(&env);
+	return (EXIT_SUCCESS);
 }

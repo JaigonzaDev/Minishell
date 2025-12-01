@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_strchr.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/20 16:03:46 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/20 19:24:53 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_strchr.c										:+:		:+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/20 16:03:46 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/20 19:24:53 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ char	*ft_strchr(const char *s, int c)
 	int c = 'e' + 256;
 	char *fun = strchr(str1, c);
 	char *my = ft_strchr(str2, c);
-	
+
 	printf("Cadena: %s\n", str1);
 	printf("Resultado de la funcion es: %s\n", fun);
 	printf("Resultado de mi funcion es: %s\n", my);
 	printf("comparacion funciones: %d\n", strcmp(fun, my));
-	
+
 	return (0);
 }*/

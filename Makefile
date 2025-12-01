@@ -14,10 +14,19 @@ SOURCES		= main.c \
 			  \
 			  tokens/split.c \
 			  tokens/quoting.c \
+			  tokens/quoting_utils.c \
 			  tokens/utils.c \
 			  tokens/operator_split.c \
+			  tokens/split_utils.c \
+			  tokens/word_split.c \
+			  tokens/split_helpers.c \
 			  \
 			  commands/parse.c \
+			  commands/redirections.c \
+			  commands/pipes.c \
+			  commands/syntax_utils.c \
+			  commands/syntax_handlers.c \
+			  commands/syntax_check.c \
 			  \
 			  signals/config.c \
 			  \
@@ -44,7 +53,19 @@ SOURCES		= main.c \
 			  pipes/utils_bonus.c \
 			  pipes/utils_fd_bonus.c \
 			  pipes/integration.c \
-			  pipes/path_utils.c
+			  pipes/path_utils.c \
+			  pipes/args_utils.c \
+			  pipes/redirection_handlers.c \
+			  pipes/redirection_setup.c \
+			  pipes/exec_utils.c \
+			  pipes/pipe_utils.c \
+			  pipes/pipe_exec.c \
+			  pipes/multi_pipe_utils.c \
+			  pipes/multi_pipe_exec.c \
+			  pipes/env_prep.c \
+			  pipes/exec_helpers.c \
+			  pipes/path_getters.c \
+			  pipes/path_search.c
 
 # Object files
 OBJECTS		= $(SOURCES:%.c=$(BUILD_DIR)/%.o)

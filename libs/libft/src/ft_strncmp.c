@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_strncmp.c									   :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/02/21 17:30:29 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/21 11:51:38 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_strncmp.c										:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/02/21 17:30:29 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/21 11:51:38 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 /*int	main(void)
 {
-	char	*str1 = "1234";
-	char 	*str2 = "1235";
-	int n;
+	char	*str1;
+	char	*str2;
+	int		n;
 
+	str1 = "1234";
+	str2 = "1235";
 	n = 53;
 	printf("La cadena 1 es: %s\n", str1);
 	printf("La cadena 2 es: %s\n", str2);

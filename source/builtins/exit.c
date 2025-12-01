@@ -13,9 +13,12 @@
 #include "builtins.h"
 #include "libft.h"
 
-static int is_valid_exit_code(char *str)
+/*
+** Check if exit code is valid
+*/
+static int	is_valid_exit_code(char *str)
 {
-	int i;
+	int	i;
 
 	if (!str || !*str)
 		return (0);
@@ -33,39 +36,42 @@ static int is_valid_exit_code(char *str)
 	return (1);
 }
 
-void ft_exit(char **args, t_env **environment)
+/*
+** Process exit arguments
+*/
+static void	process_exit_args(char **args, int *exit_code)
+{
+	long	num;
+
+	if (!is_valid_exit_code(args[1]))
+	{
+		ft_putstr_fd("minishell: exit: ", 2);
+		ft_putstr_fd(args[1], 2);
+		ft_putendl_fd(": numeric argument required", 2);
+		*exit_code = 2;
+	}
+	else if (args[2])
+	{
+		ft_putendl_fd("minishell: exit: too many arguments", 2);
+		*exit_code = 1;
+	}
+	else
+	{
+		num = ft_atol(args[1]);
+		*exit_code = (unsigned char)(num % 256);
+	}
+}
+
+/*
+** Exit builtin
+*/
+void	ft_exit(char **args, t_env **environment)
 {
 	int exit_code;
 
 	exit_code = 0;
-	// Si hay argumento, intentar parsearlo
 	if (args[1])
-	{
-		if (!is_valid_exit_code(args[1]))
-		{
-			ft_putstr_fd("minishell: exit: ", 2);
-			ft_putstr_fd(args[1], 2);
-			ft_putendl_fd(": numeric argument required", 2);
-			exit_code = 2;
-		}
-		else if (args[2])
-		{
-			// Si hay más de un argumento
-			ft_putendl_fd("minishell: exit: too many arguments", 2);
-			// En este caso bash NO sale, solo retorna 1
-			// Pero el subject puede requerir salir igual
-			// Por ahora salimos con código 1
-			exit_code = 1;
-		}
-		else
-		{
-			// Parsear el código (ft_atol para manejar números grandes)
-			long num = ft_atol(args[1]);
-			// Módulo 256 para comportamiento correcto (bash usa 8 bits)
-			exit_code = (unsigned char)(num % 256);
-		}
-	}
-	// Liberar environment antes de salir
+		process_exit_args(args, &exit_code);
 	if (environment != NULL && *environment != NULL)
 	{
 		env_freeall(environment);

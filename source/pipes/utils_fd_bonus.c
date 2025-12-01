@@ -12,7 +12,9 @@
 
 #include "pipes.h"
 
-/*It duplicates fd1 to fd2 and closes it. Besides, it closes fd_close*/
+/*
+** Duplicate and close fd
+*/
 void	ft_dup_close(int fd1, int fd2, int fd_close)
 {
 	dup2(fd1, fd2);
@@ -20,22 +22,27 @@ void	ft_dup_close(int fd1, int fd2, int fd_close)
 	ft_closefd(fd_close);
 }
 
-/*Closes fd checking if it exits */
+/*
+** Close fd if valid
+*/
 void	ft_closefd(int fd)
 {
 	if (fd != -1)
 		close(fd);
 }
 
-/*Only to be used at parent process. It closes fd[WRITE], copies
- fd[READ] to the previous fd*/
+/*
+** Handle parent fd
+*/
 void	ft_parent_fd(int *fd, int *fd_saved)
 {
 	ft_closefd(fd[WRITE]);
 	fd_saved[READ] = fd[READ];
 }
 
-/*Closes all file descriptors*/
+/*
+** Close all fds
+*/
 void	ft_close_fds(int *fd1, int *fd2)
 {
 	ft_closefd(fd1[READ]);
@@ -44,8 +51,9 @@ void	ft_close_fds(int *fd1, int *fd2)
 	ft_closefd(fd2[WRITE]);
 }
 
-/*Functions to open files depending of the mode. Besides,
-it checks if the file has been opened properly*/
+/*
+** Open file with mode
+*/
 int	ft_openfil(char *name_file, int open_mode)
 {
 	int	fd;

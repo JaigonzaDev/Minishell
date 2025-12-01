@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_toupper.c									   :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/15 14:22:13 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/15 15:40:23 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_toupper.c										:+:	  :+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/15 14:22:13 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/15 15:40:23 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* Function converts a lower-case letter to the corresponding 
+/* Function converts a lower-case letter to the corresponding
 upper-case letter.*/
 int	ft_toupper(int c)
 {

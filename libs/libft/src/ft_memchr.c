@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
-/*														:::	  ::::::::   */
-/*   ft_memchr.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/21 11:53:57 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/21 14:57:09 by mergarci		 ###   ########.fr	   */
+/*														:::		::::::::   */
+/*   ft_memchr.c										:+:		:+:	:+:   */
+/*													+:+ +:+			+:+	 */
+/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+			*/
+/*   Created: 2024/03/21 11:53:57 by mergarci			#+#	#+#			 */
+/*   Updated: 2024/03/21 14:57:09 by mergarci			###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	size_t n = 3;
 	char *fun = memchr(str1, c, n);
 	char *my = ft_memchr(str2, c, n);
-	
+
 	printf("Cadena: %p\n", str1);
 	printf("Antes de funciones: str1: %p str2: %p\n", str1, str2);
 

@@ -12,19 +12,19 @@
 
 #include "builtins.h"
 
-static void update_pwd_env(t_env **environment)
+/*
+** Update PWD environment variable
+*/
+static void	update_pwd_env(t_env **environment)
 {
-	t_env *current;
-	char *cwd;
-	
+	t_env	*current;
+	char	*cwd;
+
 	if (environment == NULL || *environment == NULL)
-		return;
-		
+		return ;
 	cwd = getcwd(NULL, 0);
 	if (cwd == NULL)
-		return;
-	
-	// Buscar y actualizar PWD
+		return ;
 	current = *environment;
 	while (current)
 	{
@@ -32,18 +32,20 @@ static void update_pwd_env(t_env **environment)
 		{
 			free(current->content);
 			current->content = ft_strdup(cwd);
-			break;
+			break ;
 		}
 		current = current->next;
 	}
-	
 	free(cwd);
 }
 
-static char *get_home_dir(t_env *environment)
+/*
+** Get HOME directory from environment
+*/
+static char	*get_home_dir(t_env *environment)
 {
-	t_env *current;
-	
+	t_env	*current;
+
 	current = environment;
 	while (current)
 	{
@@ -54,14 +56,15 @@ static char *get_home_dir(t_env *environment)
 	return (NULL);
 }
 
-int ft_cd(char *path, t_env **environment)
+/*
+** Change directory builtin
+*/
+int	ft_cd(char *path, t_env **environment)
 {
 	char *target_path;
-	
+
 	if (environment == NULL || *environment == NULL)
 		return (1);
-	
-	// Si no hay path, ir a HOME
 	if (path == NULL)
 	{
 		target_path = get_home_dir(*environment);
@@ -72,14 +75,11 @@ int ft_cd(char *path, t_env **environment)
 		}
 		path = target_path;
 	}
-	
 	if (chdir(path) == -1)
 	{
 		ft_printf("cd: %s: No such file or directory\n", path);
 		return (1);
 	}
-	
-	// Actualizar la variable PWD en el environment
 	update_pwd_env(environment);
 	return (0);
 }

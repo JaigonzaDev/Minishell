@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-/* Allocate memory. The ft_calloc() function contiguously allocates enough 
-space for count objects that are size bytes of memory each and returns a 
-pointer to he allocated memory.  The allocated memory is filled with bytes 
+/* Allocate memory. The ft_calloc() function contiguously allocates enough
+space for count objects that are size bytes of memory each and returns a
+pointer to he allocated memory.  The allocated memory is filled with bytes
 of value zero.*/
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -34,7 +34,7 @@ void	*ft_calloc(size_t count, size_t size)
 	char	*pt = calloc(count, sizeof(int));
 	char	*ptr = ft_calloc(count, sizeof(int));
 	int		i = 0;
-	
+
 	while (i++ < n*count)
 		printf("%d: %d %d\n", i, pt[i], ptr[i]);
 	return (0);
