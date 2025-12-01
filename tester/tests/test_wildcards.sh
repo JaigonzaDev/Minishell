@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # ════════════════════════════════════════════════════════════
-#   TEST DE EDGE CASES - WILDCARDS Y PATRONES
+#   TEST BONUS - WILDCARDS Y PATRONES (OPCIONAL)
+#   ⚠️  NO OBLIGATORIO - Característica bonus
 #   Basado en: Minishell Edge Cases (WIP)
 # ════════════════════════════════════════════════════════════
 

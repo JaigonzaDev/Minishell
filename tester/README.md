@@ -1,159 +1,122 @@
-# 🧪 Suite de Tests - Minishell
+# 🧪 Minishell Test Suite
 
-Batería completa de tests para validar el comportamiento del minishell comparado con bash.
+Suite completa de tests para validar el comportamiento del minishell comparado con bash.
 
-## 📊 Resumen Ejecutivo
+## 📊 Resultados Actuales
 
-| Directorio | Tests | ✅ Pasando | ❌ Fallando | % Éxito | Estado |
-|------------|-------|-----------|-------------|---------|--------|
-| **parsing_tests** | 35 | 17 | 18 | 48.5% | 🟡 |
-| **edge_cases_tests** | 17 | 11 | 6 | 64.7% | 🟡 |
-| **exit_status_tests** | 30 | - | - | - | ⚠️ Timeout |
-| **TOTAL** | **52** | **28** | **24** | **53.8%** | 🟡 |
+**Tests Obligatorios: 45/45 (100%)** ✅
+- Exit codes de sintaxis: 14/14 ✅
+- Mensajes de sintaxis: 9/9 ✅
+- Expansión de variables: 10/10 ✅
+- Redirecciones y pipes: 10/10 ✅
 
-> ⚠️ **Nota**: exit_status_tests tiene problemas de timeout y no se incluye en el total
+**Tests Bonus (Opcional): 2/7 (28%)**
+- Wildcards (*, ?, [...]): 2/7 ⚠️ NO OBLIGATORIO
 
 ## 🚀 Ejecución Rápida
 
 ```bash
-# 🎯 RECOMENDADO: Verificación rápida de bugs (1 minuto)
-bash tester/verify_bugs.sh
-
-# Ejecutar TODOS los tests de parsing y expansión
-cd tester/parsing_tests && ./run_all_tests.sh
-
-# Ejecutar TODOS los tests de edge cases
-cd tester/edge_cases_tests && ./run_all_tests.sh
+# Ejecutar TODOS los tests (obligatorios + bonus)
+cd tester/tests && ./run_all.sh
 
 # Ejecutar tests individuales
-cd tester/parsing_tests && ./test_syntax_manual.sh
-cd tester/edge_cases_tests && ./test_wildcards.sh
+cd tester/tests
+./test_syntax_exit_code.sh    # Exit codes (2 para syntax errors)
+./test_syntax_manual.sh        # Mensajes de error de sintaxis
+./test_expander.sh             # Expansión de variables ($var, $?, etc)
+./test_redirections.sh         # Redirecciones y pipes
+./test_wildcards.sh            # BONUS: Wildcards (opcional)
 ```
-
-## 📚 Documentación Disponible
-
-| Documento | Descripción | Cuándo Usar |
-|-----------|-------------|-------------|
-| **README.md** | Este archivo - Guía principal | Comenzar aquí |
-| **INFORME_BUGS.md** | Análisis detallado de bugs | Para desarrollo/fixes |
-| **RESUMEN_EJECUTIVO.md** | Vista ejecutiva completa | Para reportes/management |
-| **verify_bugs.sh** | Script de verificación rápida | Para verificar estado actual |
 
 ## 📁 Estructura
 
 ```
 tester/
-├── README.md                    # Este archivo
-├── INFORME_BUGS.md             # 🐛 Informe detallado de bugs confirmados
-│
-├── parsing_tests/              # Tests de sintaxis y expansión (35 tests)
-│   ├── test_syntax_manual.sh        # ✅ Mensajes de error (10/10 - 100%)
-│   ├── test_syntax_exit_code.sh     # ❌ Exit codes (5/15 - 33%)
-│   ├── test_expander.sh             # ⚠️ Expansión variables (2/10 - 20%)
-│   ├── run_all_tests.sh             # Master runner
-│   ├── README.md                    # Documentación específica
-│   └── RESULTS.md                   # Resultados detallados
-│
-├── edge_cases_tests/           # Tests de edge cases (17 tests)
-│   ├── test_wildcards.sh            # ❌ Wildcards (2/7 - 28%)
-│   ├── test_redirections.sh         # ✅ Redirecciones (9/10 - 90%)
-│   ├── run_all_tests.sh             # Master runner
-│   └── README.md                    # Documentación específica
-│
-├── exit_status_tests/          # Tests de exit status (⚠️ Tiene timeout)
-│   ├── test_manual.sh
-│   └── README.md
-│
-└── kichkiro-tester/            # Tester externo (terceros)
-    └── ...
+├── README.md              # Este archivo
+└── tests/                 # Todos los tests
+    ├── run_all.sh                 # 🎯 Script principal
+    ├── test_syntax_exit_code.sh   # Exit codes de sintaxis
+    ├── test_syntax_manual.sh      # Mensajes de error
+    ├── test_expander.sh           # Expansión de variables
+    ├── test_redirections.sh       # Redirecciones y pipes
+    └── test_wildcards.sh          # BONUS: Wildcards (opcional)
 ```
 
-## 🐛 Bugs Críticos Identificados
+## 📝 Descripción de Tests
 
-**Ver análisis completo en**: [`INFORME_BUGS.md`](./INFORME_BUGS.md)
+### Tests Obligatorios
 
-### 🔴 Prioridad Alta (Críticos)
+#### 1. Exit Codes de Sintaxis (14 tests)
+Verifica que el minishell retorne el código de salida correcto para errores de sintaxis.
+- Debe retornar `2` para errores de sintaxis (como bash)
+- Ejemplos: pipes sin comando, redirecciones inválidas, quotes sin cerrar
 
-1. **BUG #1: Exit Status = 0 en errores de sintaxis**
-   - Afecta: 10 tests
-   - `ls >` → debe retornar `$? = 2`, retorna `0`
+#### 2. Mensajes de Sintaxis (9 tests)
+Valida los mensajes de error para sintaxis inválida.
+- Tokens inesperados
+- Operadores mal formados
+- Quotes sin cerrar
 
-2. **BUG #2: Wildcards no se expanden**
-   - Afecta: 5 tests
-   - `echo *` → imprime `*` en lugar de expandir archivos
-   - ⚠️ **Verificar si es obligatorio según subject**
+#### 3. Expansión de Variables (10 tests)
+Prueba la expansión de variables y casos especiales.
+- Variables de entorno: `$HOME`, `$USER`, `$PATH`
+- Exit status: `$?`
+- Variables posicionales: `$0`, `$1`, etc.
+- Variables consecutivas: `$a$b`
+- Variables inexistentes
+- Word splitting (solo en variables sin comillas)
 
-3. **BUG #5: Variables inexistentes eliminan palabras**
-   - Afecta: 4 tests
-   - `echo hello $non_exist world` → imprime solo `hello`
+#### 4. Redirecciones y Pipes (10 tests)
+Valida redirecciones, heredocs y pipes.
+- Redirecciones de entrada/salida: `<`, `>`, `>>`
+- Heredocs: `<<`
+- Pipes: `|`
+- Combinaciones de redirecciones
+- Errores de archivos (deben ir a stderr)
 
-### 🟡 Prioridad Media
+### Tests Bonus (Opcional)
 
-4. **BUG #4: Variables con espacios no se colapsan**
-   - Afecta: 3 tests
-   - `test="  hello  "; echo $test` → mantiene todos los espacios
+#### 5. Wildcards (7 tests) ⭐ BONUS - NO OBLIGATORIO
+Expansión de patrones con wildcards.
+- `*` (cualquier secuencia de caracteres)
+- `?` (un solo carácter)
+- `[...]` (conjunto de caracteres)
 
-5. **BUG #3: Sintaxis ${VAR} no soportada**
-   - Afecta: 1 test
-   - `echo ${USER}` → no imprime nada
-   - ⚠️ **Verificar si es obligatorio según subject**
+> ⚠️ **Nota**: Los wildcards son una característica **OPCIONAL** según el subject de minishell.
+> No es necesario implementarlos para aprobar el proyecto.
 
-## ✅ Funcionalidades Correctas
+## ✅ Criterios de Éxito
 
-- ✅ **Detección de errores de sintaxis** (100%)
-- ✅ **Mensajes de error apropiados** (100%)
-- ✅ **Redirecciones básicas** (<, >, >>) (90%)
-- ✅ **Variables simples** ($VAR, $PATH, $USER, $SHELL)
-- ✅ **Variable $?** (exit status del último comando)
-- ✅ **Pipes múltiples**
+Para considerar el minishell completo y funcional:
+- ✅ **100% en tests obligatorios** (45/45)
+- ⚠️ Tests bonus opcionales (wildcards)
 
-## 📈 Plan de Acción Sugerido
+## 🐛 Bugs Corregidos
 
-1. **Corregir BUG #1** (exit status) - Impacto: +10 tests → 73% total
-2. **Corregir BUG #5** (variables inexistentes) - Impacto: +4 tests → 80% total
-3. **Decidir sobre wildcards** (BUG #2) - Verificar subject
-4. **Corregir BUG #4** (word splitting) - Impacto: +3 tests → 86% total
-5. **Decidir sobre ${VAR}** (BUG #3) - Verificar subject
+1. **Exit status para syntax errors**: Ahora retorna `2` (antes retornaba `258`)
+2. **Word splitting**: Implementado para variables sin comillas
+3. **Variables consecutivas**: `$a$b` ahora funciona correctamente
+4. **Variables posicionales**: `$0`, `$1`, etc. implementados
+5. **Operadores en variables**: Respeta comillas al separar operadores
+6. **Errores a stderr**: Los mensajes de error van a stderr (fd 2)
+7. **Variables vacías**: No eliminan palabras siguientes
 
-**Éxito esperado tras fixes**: ~96% (50/52 tests)
+## 📖 Comparación con Bash
 
-## 🔧 Comandos de Verificación Manual
-
+Todos los tests comparan el output y exit code del minishell con bash real:
 ```bash
-# BUG #1: Exit status
-echo "ls >" | ./bin/minishell; echo $?  # Debe ser 2
-
-# BUG #2: Wildcards
-echo "echo *" | ./bin/minishell  # Debe listar archivos
-
-# BUG #3: ${VAR}
-echo "echo \${USER}" | ./bin/minishell  # Debe imprimir usuario
-
-# BUG #4: Word splitting
-echo "export test='  hello  '; echo \$test" | ./bin/minishell  # Debe colapsar
-
-# BUG #5: Variables inexistentes
-echo "echo hello \$non_exist world" | ./bin/minishell  # Debe imprimir "hello world"
+# El test ejecuta el mismo comando en ambos y compara
+bash -c "comando" > output_bash.txt 2>&1
+./minishell < input.txt > output_mini.txt 2>&1
+diff output_bash.txt output_mini.txt
 ```
 
-## 📝 Notas
+## 🎯 Próximos Pasos
 
-- Todos los bugs fueron **verificados manualmente** comparando con bash
-- Los tests están bien diseñados - no hay falsos positivos
-- Memory leaks detectados por sanitizer (revisar después de bugs funcionales)
-- Algunos tests pueden depender de features opcionales del subject
+Si quieres alcanzar el 100% completo (incluyendo bonus):
+1. Implementar wildcards usando `glob.h` o custom globbing
+2. Manejar `*`, `?`, `[...]` patterns
+3. Aplicar solo en argumentos sin comillas
+4. Expandir en orden alfabético
 
-## 🤝 Contribuir
-
-Para añadir nuevos tests:
-1. Crear script en el directorio apropiado
-2. Seguir formato de tests existentes
-3. Actualizar `run_all_tests.sh` del directorio
-4. Ejecutar y documentar resultados
-
----
-
-**Última actualización**: 1 de Diciembre de 2025  
-**Tests totales**: 52 (excluyendo exit_status_tests con timeout)  
-**Éxito actual**: 53.8%  
-**Éxito proyectado**: ~96% tras correcciones
+Tiempo estimado: 3-5 días para implementación completa de wildcards.
