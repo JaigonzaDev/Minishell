@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:12:34 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/27 10:56:01 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/01 06:21:38 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_global
 {
     int last_signal;
     int shell_mode;
+    int exit_flag;
 } t_global;
 extern t_global g_status;
 typedef struct s_token

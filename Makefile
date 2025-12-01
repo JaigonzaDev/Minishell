@@ -54,7 +54,7 @@ LIBFT		= $(LIB_DIR)/libft.a
 
 # Compiler and flags
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -g
+CFLAGS		= -Wall -Werror -Wextra -g3 -fsanitize=address
 INCLUDES	= -I$(INCLUDE_DIR) -I$(LIB_DIR)/include
 RM			= rm -rf
 

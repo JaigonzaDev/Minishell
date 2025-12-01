@@ -38,7 +38,7 @@ void main_signal_config(void) {
   sigemptyset(&sa.sa_mask);
   sigaction(SIGINT, &sa, NULL);
 
-  sa.sa_handler = quit_handler;
+  sa.sa_handler = SIG_IGN;
   sigaction(SIGQUIT, &sa, NULL);
 }
 
