@@ -51,13 +51,13 @@ char *separate_operators(char *input)
     int i, j;
     int len;
     int new_len;
+    int in_squote;
+    int in_dquote;
     
     if (!input)
         return (NULL);
     
     len = ft_strlen(input);
-    
-    // Calcular nueva longitud (peor caso: cada carácter necesita espacio extra)
     new_len = len * 2;
     result = (char *)ft_calloc(new_len + 1, sizeof(char));
     if (!result)
@@ -65,48 +65,48 @@ char *separate_operators(char *input)
     
     i = 0;
     j = 0;
+    in_squote = 0;
+    in_dquote = 0;
     
     while (i < len)
     {
-        // Si encontramos un operador compuesto (>>, <<)
-        if (is_compound_operator(&input[i]))
+        // Rastrear comillas
+        if (input[i] == '\'' && !in_dquote)
+            in_squote = !in_squote;
+        else if (input[i] == '\"' && !in_squote)
+            in_dquote = !in_dquote;
+        
+        // Solo separar operadores si NO estamos dentro de comillas
+        if (!in_squote && !in_dquote)
         {
-            // Agregar espacio antes si no estamos al inicio y el carácter anterior no es espacio
-            if (j > 0 && result[j - 1] != ' ' && !handle_literal_str(&input[i], result[j - 1]))
-                result[j++] = ' ';
-            
-            // Agregar el operador compuesto
-            result[j++] = input[i++];
-            result[j++] = input[i++];
-            
-            // Agregar espacio después si el siguiente carácter no es espacio ni fin de cadena
-            if (i < len && input[i] != ' ' && input[i] != '\t' && !handle_literal_str(&input[i], result[j - 1]))
-                result[j++] = ' ';
+            // Si encontramos un operador compuesto (>>, <<)
+            if (is_compound_operator(&input[i]))
+            {
+                if (j > 0 && result[j - 1] != ' ')
+                    result[j++] = ' ';
+                result[j++] = input[i++];
+                result[j++] = input[i++];
+                if (i < len && input[i] != ' ' && input[i] != '\t')
+                    result[j++] = ' ';
+                continue;
+            }
+            // Si encontramos un operador simple (<, >, |)
+            else if (is_shell_operator(input[i]))
+            {
+                if (j > 0 && result[j - 1] != ' ')
+                    result[j++] = ' ';
+                result[j++] = input[i++];
+                if (i < len && input[i] != ' ' && input[i] != '\t')
+                    result[j++] = ' ';
+                continue;
+            }
         }
-        // Si encontramos un operador simple (<, >, |)
-        else if (is_shell_operator(input[i]))
-        {
-            // Agregar espacio antes si no estamos al inicio y el carácter anterior no es espacio
-            if (j > 0 && result[j - 1] != ' ' && !handle_literal_str(&input[i], result[j - 1]))
-                result[j++] = ' ';
-            
-            // Agregar el operador
-            result[j++] = input[i++];
-            
-            // Agregar espacio después si el siguiente carácter no es espacio ni fin de cadena
-            if (i < len && input[i] != ' ' && input[i] != '\t' && !handle_literal_str(&input[i], result[j - 1]))
-                result[j++] = ' ';
-        }
-        else
-        {
-            // Carácter normal, copiarlo tal como está
-            result[j++] = input[i++];
-        }
+        
+        // Carácter normal o dentro de comillas, copiarlo tal como está
+        result[j++] = input[i++];
     }
     
     result[j] = '\0';
-    
-    // Redimensionar para ahorrar memoria
     temp = ft_strdup(result);
     free(result);
     

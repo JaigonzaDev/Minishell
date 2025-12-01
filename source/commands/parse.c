@@ -180,7 +180,7 @@ int syntax_error(char *token_value, int type)
     if (type == E_ERROR_UNEXPECTED)
     {
         fprintf(stderr, "minishell: syntax error near unexpected token `%s'\n", token_value);
-        return (258);
+        return (2);
     }
     else if (type == E_ERROR_MISSING_FILE)
     {

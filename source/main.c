@@ -85,6 +85,10 @@ int main(int argc, char **argv, char **envp) {
       line = separated_line;
     }
     tokens = bash_split(&line, env);
+    
+    // Aplicar word splitting (dividir tokens con espacios no literales)
+    tokens = apply_word_splitting(tokens);
+    
     if ((status = parse_commands_new(&tokens)) == 0) {
       // debug_parsing(tokens);
 
@@ -95,6 +99,9 @@ int main(int argc, char **argv, char **envp) {
       // Actualizar el estado de salida después de cada comando
       update_exit_status(status);
       main_signal_config();
+    } else {
+      // Error de sintaxis: actualizar exit status (bash usa 2)
+      update_exit_status(status);
     }
     free_token_list(tokens);
     // CARLOS: >QUITAR env_freeall de aquí para no liberar en cada iteración<

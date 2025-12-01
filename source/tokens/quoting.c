@@ -262,9 +262,23 @@ void case_dollar(char **line, t_token **token, t_env *env)
 		// (*line)++;
 		return ;
 	}
+	// Variables posicionales: $0, $1, $2, etc.
+	if (**line >= '0' && **line <= '9')
+	{
+		if (**line == '0')
+		{
+			// $0 es el nombre del programa
+			if (ft_putstr("minishell", &(*token)->token) == -1)
+				return;
+		}
+		// $1, $2, etc. están vacíos (no hay argumentos en minishell)
+		// No añadimos nada al token
+		return;
+	}
 	// Obtener el nombre de la variable
 	var = NULL;
-	while (*(*line + 1) != ' ' && *(*line + 1) != '\t' && *(*line + 1) != '\0' && *(*line + 1) != '\'')
+	while (*(*line + 1) != ' ' && *(*line + 1) != '\t' && *(*line + 1) != '\0' && 
+		   *(*line + 1) != '\'' && *(*line + 1) != '$')
 	{
 		if (((*token)->lit == 1 && *(*line + 1) == '\"'))
 			break;

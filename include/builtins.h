@@ -30,7 +30,7 @@ void ft_echo(char **args);
 void ft_env(t_env *enviroment);
 
 //exit.c
-void ft_exit(t_env **environment);
+void ft_exit(char **args, t_env **environment);
 
 //export.c
 int ft_export(char **args, t_env **environment);

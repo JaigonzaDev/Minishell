@@ -52,7 +52,7 @@ int ft_execute_builtin(char **args, t_env **environment)
     }
     else if (ft_strncmp(args[0], "exit", 5) == 0)
     {
-        ft_exit(environment);
+        ft_exit(args, environment);
         status = 0;  // exit no debería retornar
     }
     else if (ft_strncmp(args[0], "export", 7) == 0)

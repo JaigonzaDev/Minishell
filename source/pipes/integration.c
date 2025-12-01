@@ -25,11 +25,12 @@ char **tokens_to_args(t_token *tokens) {
   if (!tokens)
     return (NULL);
 
-  // Contar tokens que son comandos o argumentos
+  // Contar tokens que son comandos o argumentos (ignorar tokens vacíos)
   count = 0;
   current = tokens;
   while (current) {
-    if (current->type == E_COMMAND || current->type == E_ARG)
+    if ((current->type == E_COMMAND || current->type == E_ARG) && 
+        current->token != NULL && current->token[0] != '\0')
       count++;
     current = current->next;
   }
@@ -39,11 +40,12 @@ char **tokens_to_args(t_token *tokens) {
   if (!args)
     return (NULL);
 
-  // Llenar array
+  // Llenar array (solo incluir tokens no vacíos)
   i = 0;
   current = tokens;
   while (current && i < count) {
-    if (current->type == E_COMMAND || current->type == E_ARG) {
+    if ((current->type == E_COMMAND || current->type == E_ARG) && 
+        current->token != NULL && current->token[0] != '\0') {
       args[i] = ft_strdup(current->token);
       i++;
     }
@@ -195,7 +197,9 @@ static int execute_simple_command(t_token *tokens, t_env *env) {
       // Buscar el comando en PATH
       char *command_path = find_command_in_path(args[0], NULL, env);
       if (!command_path) {
-        ft_printf("minishell: %s: command not found\n", args[0]);
+        ft_putstr_fd("minishell: ", 2);
+        ft_putstr_fd(args[0], 2);
+        ft_putstr_fd(": command not found\n", 2);
         exit(127);
       }
 
@@ -385,7 +389,9 @@ static int execute_pipe_command(t_token *tokens, t_env *env, int input_fd,
       // Buscar el comando en PATH
       char *command_path = find_command_in_path(args[0], NULL, env);
       if (!command_path) {
-        ft_printf("minishell: %s: command not found\n", args[0]);
+        ft_putstr_fd("minishell: ", 2);
+        ft_putstr_fd(args[0], 2);
+        ft_putstr_fd(": command not found\n", 2);
         exit(127);
       }
 

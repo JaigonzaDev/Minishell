@@ -144,6 +144,7 @@ const char * prompt(int type);
 int parse_commands_new(t_token **tokens);
 void debug_parsing(t_token *tokens);
 t_token *bash_split(char **line, t_env *env);
+t_token *apply_word_splitting(t_token *tokens);
 void debug(t_token *tokens);
 void delete_node(t_token **tokens, t_token **tmp);
 void free_token_list(t_token *tokens);
