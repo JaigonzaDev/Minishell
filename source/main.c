@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:12:01 by mergarci          #+#    #+#             */
-/*   Updated: 2025/12/01 07:01:25 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/01 09:51:13 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ char *read_line(int type) {
   char *buf = NULL;
   // (void)type;
 
-  if (g_status.exit_flag == 1) {
-    exit(0);
-  }
   if (isatty(STDIN_FILENO)) {
     buf = readline(prompt(type));
     if (g_status.last_signal == SIGQUIT) {
@@ -66,7 +63,6 @@ int main(int argc, char **argv, char **envp) {
   (void)argc;
   (void)argv;
 
-  g_status.exit_flag = 0;
   env = NULL;
   tokens = NULL;
   line = NULL;
@@ -80,6 +76,8 @@ int main(int argc, char **argv, char **envp) {
       free(line);
       continue;
     }
+    // debug_parsing(tokens);
+
     // Separar operadores pegados al texto
     char *separated_line = separate_operators(line);
     if (separated_line) {
@@ -88,7 +86,7 @@ int main(int argc, char **argv, char **envp) {
     }
     tokens = bash_split(&line, env);
     if ((status = parse_commands_new(&tokens)) == 0) {
-      debug_parsing(tokens);
+      // debug_parsing(tokens);
 
       // Ejecutar comando (bash_execute maneja forks internos para comandos
       // externos)
