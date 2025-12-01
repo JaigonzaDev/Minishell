@@ -10,6 +10,11 @@ Suite completa de tests para validar el comportamiento del minishell comparado c
 - Expansión de variables: 10/10 ✅
 - Redirecciones y pipes: 10/10 ✅
 
+**Tests de Evaluación: Por ejecutar** 🎯
+- Basados en la evaluation sheet oficial
+- 8 secciones obligatorias (40 puntos)
+- Tests alineados con criterios de corrección
+
 **Tests Bonus (Opcional): 2/7 (28%)**
 - Wildcards (*, ?, [...]): 2/7 ⚠️ NO OBLIGATORIO
 
@@ -18,6 +23,9 @@ Suite completa de tests para validar el comportamiento del minishell comparado c
 ```bash
 # Ejecutar TODOS los tests (obligatorios + bonus)
 cd tester/tests && ./run_all.sh
+
+# Ejecutar tests de evaluación (criterios oficiales de 42)
+cd tester/tests/evaluation_tests && ./test_evaluation.sh
 
 # Ejecutar tests individuales
 cd tester/tests
@@ -33,13 +41,21 @@ cd tester/tests
 ```
 tester/
 ├── README.md              # Este archivo
+├── kichkiro-tester/       # Tester de referencia
+├── LucasKuhn/             # Tester de referencia
 └── tests/                 # Todos los tests
     ├── run_all.sh                 # 🎯 Script principal
     ├── test_syntax_exit_code.sh   # Exit codes de sintaxis
     ├── test_syntax_manual.sh      # Mensajes de error
     ├── test_expander.sh           # Expansión de variables
     ├── test_redirections.sh       # Redirecciones y pipes
-    └── test_wildcards.sh          # BONUS: Wildcards (opcional)
+    ├── test_wildcards.sh          # BONUS: Wildcards (opcional)
+    ├── evaluation_tests/          # 📋 Tests de evaluación oficial
+    │   ├── README.md              # Documentación evaluación
+    │   └── test_evaluation.sh     # Tests según evaluation sheet
+    └── notebook/                  # 📓 Jupyter notebook (opcional)
+        ├── README.md
+        └── minishell_tests.ipynb
 ```
 
 ## 📝 Descripción de Tests

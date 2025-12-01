@@ -75,9 +75,10 @@ exit_code4=$?
 echo ""
 
 # Tests bonus
-echo -e "${BLUE}┌────────────────────────────────────────────────────────────┐${NC}"
-echo -e "${BLUE}│  TESTS BONUS (OPCIONAL - NO OBLIGATORIO)                  │${NC}"
-echo -e "${BLUE}└────────────────────────────────────────────────────────────┘${NC}"
+echo ""
+echo -e "${YELLOW}╔════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${YELLOW}║  ⭐ TESTS BONUS - OPCIONAL (NO REQUERIDO PARA APROBAR)  ║${NC}"
+echo -e "${YELLOW}╚════════════════════════════════════════════════════════════╝${NC}"
 echo ""
 
 echo -e "${YELLOW}═══════════════════════════════════════════════════════════${NC}"
