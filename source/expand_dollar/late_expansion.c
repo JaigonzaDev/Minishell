@@ -13,22 +13,6 @@
 #include "minishell.h"
 
 /*
-** Join expansion parts
-*/
-static char	*join_expansion_parts(char *before, char *status, char *after)
-{
-	char	*temp;
-	char	*result;
-
-	temp = ft_strjoin(before, status);
-	if (!temp)
-		return (NULL);
-	result = ft_strjoin(temp, after);
-	free(temp);
-	return (result);
-}
-
-/*
 ** Perform single expansion
 */
 static char	*perform_single_expansion(char *str, char *pos)

@@ -32,7 +32,9 @@ SOURCES		= main.c \
 			  \
 			  expand_dollar/expand_dollar.c \
 			  expand_dollar/command_substitution.c \
+			  expand_dollar/command_substitution_utils.c \
 			  expand_dollar/late_expansion.c \
+			  expand_dollar/late_expansion_utils.c \
 			  \
 			  environment/environment.c \
 			  environment/environment_utils.c \
