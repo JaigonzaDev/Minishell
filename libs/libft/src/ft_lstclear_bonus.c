@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*																			*/
-/*														:::		::::::::   */
-/*   ft_lstclear_bonus.c								:+:		:+:	:+:   */
-/*													+:+ +:+			+:+	 */
-/*   By: mergarci <mergarci@student.42.fr>			+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+			*/
-/*   Created: 2024/03/29 12:33:15 by mergarci			#+#	#+#			 */
-/*   Updated: 2024/04/02 11:37:57 by mergarci			###   ########.fr	   */
-/*																			*/
-/* ************************************************************************** */
-
 #include "libft.h"
 
 /* Delete and free the given ’lst’ node and all consecutive nodes of that
