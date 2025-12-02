@@ -57,9 +57,9 @@ void	ft_write_num(int fd, int num_aux, int is_negative, int is_overflow)
 void	ft_putnbr_fd(int n, int fd)
 
 {
-	int is_overflow;
-	int is_negative;
-	int num_aux;
+	int	is_overflow;
+	int	is_negative;
+	int	num_aux;
 
 	is_negative = 0;
 	is_overflow = 0;
