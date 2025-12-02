@@ -30,4 +30,7 @@ void env_print_simple(void);
 void env_free_simple(void);
 char *env_get_simple(const char *name);
 
+/* environment_utils.c */
+void allocate_var_content(t_env *var, char *str, char *equal_pos);
+
 #endif

@@ -35,6 +35,7 @@ SOURCES		= main.c \
 			  expand_dollar/late_expansion.c \
 			  \
 			  environment/environment.c \
+			  environment/environment_utils.c \
 			  environment/env_simple.c \
 			  \
 			  builtins/cd.c \
@@ -42,6 +43,7 @@ SOURCES		= main.c \
 			  builtins/env.c \
 			  builtins/exit.c \
 			  builtins/export.c \
+			  builtins/export_utils.c \
 			  builtins/pwd.c \
 			  builtins/unset.c \
 			  builtins/builtins_utils.c \

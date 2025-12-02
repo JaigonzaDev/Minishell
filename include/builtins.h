@@ -30,4 +30,11 @@ int ft_execute_builtin(char **args, t_env **environment);
 int ft_true(void);
 int ft_false(void);
 
+/* export_utils.c */
+int is_valid_identifier(const char *str);
+char *extract_var_name(const char *arg);
+char *extract_var_value(const char *arg);
+t_env *create_env_node(char *key, char *value);
+int update_existing_env(t_env *env, char *key, char *value);
+
 #endif

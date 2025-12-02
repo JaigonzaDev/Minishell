@@ -13,27 +13,6 @@
 #include "environment.h"
 
 /*
-** Allocate variable content
-*/
-static void	allocate_var_content(t_env *var, char *str, char *equal_pos)
-{
-	int	var_len;
-
-	var_len = equal_pos - str;
-	var->var = malloc(var_len + 1);
-	if (!var->var)
-	{
-		var->var = ft_strdup("");
-		var->content = ft_strdup("");
-		return ;
-	}
-	ft_strlcpy(var->var, str, var_len + 1);
-	var->content = ft_strdup(equal_pos + 1);
-	if (!var->content)
-		var->content = ft_strdup("");
-}
-
-/*
 ** Get environment info from string
 */
 static void	env_get_info(t_env *var, char *str)
