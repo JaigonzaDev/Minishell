@@ -34,9 +34,9 @@ static int	process_token_content(char **line, t_token *token, t_env *env)
 */
 t_token	*bash_split(char **line, t_env *env)
 {
-	t_token *tokens;
-	t_token *head;
-	int i;
+	t_token	*tokens;
+	t_token	*head;
+	int		i;
 
 	tokens = init_split(&head, &i);
 	if (!tokens)

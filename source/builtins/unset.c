@@ -17,8 +17,8 @@
 */
 void	ft_unset(char *var, t_env **enviroment)
 {
-	t_env *current;
-	t_env *prev;
+	t_env	*current;
+	t_env	*prev;
 
 	if (var == NULL || enviroment == NULL || *enviroment == NULL)
 		return ;

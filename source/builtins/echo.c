@@ -35,8 +35,8 @@ static bool	check_newline_flag(char *arg)
 */
 void	ft_echo(char **args)
 {
-	int i;
-	bool newline;
+	int		i;
+	bool	newline;
 
 	if (args == NULL || args[0] == NULL)
 	{

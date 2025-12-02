@@ -67,7 +67,7 @@ static void	process_exit_args(char **args, int *exit_code)
 */
 void	ft_exit(char **args, t_env **environment)
 {
-	int exit_code;
+	int	exit_code;
 
 	exit_code = 0;
 	if (args[1])

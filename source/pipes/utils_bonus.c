@@ -54,23 +54,26 @@ void	ft_create_fd(int *fd)
 */
 void	ft_read_heredoc(int fd, char *limit)
 {
-	char	buffer[1024];
-	char	*newlimit;
-	ssize_t	bytes_read;
+	char	*line;
+	int		limit_len;
 
-	newlimit = ft_strjoin(limit, "\n");
+	limit_len = ft_strlen(limit);
 	while (1)
 	{
 		ft_printf("> ");
-		bytes_read = read(STDIN_FILENO, buffer, sizeof(buffer) - 1);
-		if (bytes_read <= 0)
+		line = ft_gnl(STDIN_FILENO, NULL);
+		if (!line)
 			break ;
-		buffer[bytes_read] = '\0';
-		if (ft_strncmp(buffer, newlimit, ft_strlen(newlimit)) == 0)
+		if (ft_strncmp(line, limit, limit_len) == 0
+			&& (line[limit_len] == '\0' || line[limit_len] == '\n'))
+		{
+			free(line);
 			break ;
-		write(fd, buffer, bytes_read);
+		}
+		write(fd, line, ft_strlen(line));
+		write(fd, "\n", 1);
+		free(line);
 	}
-	newlimit = ft_memfree(newlimit);
 }
 
 /*

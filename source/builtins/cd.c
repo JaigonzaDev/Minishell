@@ -61,7 +61,7 @@ static char	*get_home_dir(t_env *environment)
 */
 int	ft_cd(char *path, t_env **environment)
 {
-	char *target_path;
+	char	*target_path;
 
 	if (environment == NULL || *environment == NULL)
 		return (1);

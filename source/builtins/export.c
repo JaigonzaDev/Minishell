@@ -178,8 +178,8 @@ static int	process_export_arg(char *arg, t_env **env)
 */
 int	ft_export(char **args, t_env **env)
 {
-	int i;
-	int exit_status;
+	int	i;
+	int	exit_status;
 
 	exit_status = 0;
 	if (!args[1])

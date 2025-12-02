@@ -125,8 +125,8 @@ t_env	*env_free(t_env *env)
 */
 void	env_freeall(t_env **env)
 {
-	t_env *aux;
-	t_env *deleted;
+	t_env	*aux;
+	t_env	*deleted;
 
 	if (!env || !*env)
 		return ;
