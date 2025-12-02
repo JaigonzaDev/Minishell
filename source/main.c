@@ -21,31 +21,12 @@ t_global	g_status;
 char	*read_line(int type)
 {
 	char	*buf;
-	int		len;
 
 	buf = NULL;
 	if (isatty(STDIN_FILENO))
-	{
-		buf = readline(prompt(type));
-		if (g_status.last_signal == SIGQUIT)
-			(void)0;
-		else if (g_status.last_signal == SIGINT)
-			(void)0;
-		else if (feof(stdin))
-			exit(EXIT_SUCCESS);
-		if (buf && buf[0] != '\0')
-			add_history(buf);
-	}
+		buf = read_line_interactive(type);
 	else
-	{
-		buf = ft_gnl(STDIN_FILENO, NULL);
-		if (buf)
-		{
-			len = ft_strlen(buf);
-			if (len > 0 && buf[len - 1] == '\n')
-				buf[len - 1] = '\0';
-		}
-	}
+		buf = read_line_stdin();
 	return (buf);
 }
 
@@ -69,30 +50,17 @@ static void	process_line(char *line, t_env *env)
 {
 	t_token	*tokens;
 	int		status;
-	char	*separated_line;
 
 	if (line[0] == '#')
 	{
 		free(line);
 		return ;
 	}
-	separated_line = separate_operators(line);
-	if (separated_line)
-	{
-		free(line);
-		line = separated_line;
-	}
+	line = handle_operator_separation(line);
 	tokens = bash_split(&line, env);
 	tokens = apply_word_splitting(tokens);
 	status = parse_commands_new(&tokens);
-	if (status == 0)
-	{
-		status = bash_execute(tokens, env);
-		update_exit_status(status);
-		main_signal_config();
-	}
-	else
-		update_exit_status(status);
+	execute_and_update_status(tokens, env, status);
 	free_token_list(tokens);
 }
 
