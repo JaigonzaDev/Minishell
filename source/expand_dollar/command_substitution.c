@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_substitution.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:27:39 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:30:03 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:32:51 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "pipes.h"
 #include <sys/wait.h>
 #include <unistd.h>
-
-int		g_last_exit_status = 0;
 
 /*
 ** Execute command and capture output
@@ -47,7 +45,7 @@ char	*execute_command_capture_output(char *command, t_env *env)
 */
 char	*get_exit_status_string(void)
 {
-	return (ft_itoa(g_last_exit_status));
+	return (ft_itoa(g_status.last_exit_status));
 }
 
 /*
@@ -55,7 +53,7 @@ char	*get_exit_status_string(void)
 */
 void	update_exit_status(int status)
 {
-	g_last_exit_status = status;
+	g_status.last_exit_status = status;
 }
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:29:03 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:29:07 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:29:32 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,12 @@ typedef struct s_group
 
 typedef struct s_global
 {
-	int	last_signal;
-	int	shell_mode;
-	int	exit_flag;
+	int		last_exit_status;
+	int		last_signal;
+	int		shell_mode;
+	int		exit_flag;
+	char	**g_env_copy;
+	int		env_count;
 }	t_global;
 
 extern t_global	g_status;
@@ -110,8 +113,6 @@ typedef struct s_split_context
 	char	*start;
 	int		in_word;
 }	t_split_context;
-
-extern int		g_last_exit_status;
 
 int			quoting(char **line, t_token **token, t_env *env);
 void		case_dquote(char **line, t_token **token, t_env *env);

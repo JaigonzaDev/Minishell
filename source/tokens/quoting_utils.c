@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quoting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:26:37 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:27:24 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:34:21 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static int	handle_special_vars(char **line, t_token **token)
 {
 	if (**line == '?')
 	{
-		if (ft_putstr(ft_itoa(g_last_exit_status), &(*token)->token) == -1)
+		if (ft_putstr(ft_itoa(g_status.last_exit_status), &(*token)->token)
+			== -1)
 			return (1);
 		return (1);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:26:06 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:26:08 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:32:40 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	env = NULL;
 	main_signal_config();
+	g_status.last_exit_status = 0;
+	g_status.g_env_copy = NULL;
+	g_status.env_count = 0;
 	env_save(envp, &env);
 	while (1)
 	{
