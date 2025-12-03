@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:29:03 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 09:29:32 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/03 20:24:46 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,5 +178,6 @@ int			handle_expect_cmd(t_token *current, int *state);
 int			handle_expect_arg(t_token *current, int *state);
 int			handle_expect_filename(t_token *current, int *state);
 int			handle_expect_delimiter(t_token *current, int *state);
+void		ignore_sigint(void);
 
 #endif

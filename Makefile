@@ -71,7 +71,8 @@ SOURCES		= main.c \
 			  pipes/env_prep.c \
 			  pipes/exec_helpers.c \
 			  pipes/path_getters.c \
-			  pipes/path_search.c
+			  pipes/path_search.c \
+			  pipes/exec_signal_handler.c
 
 # Object files
 OBJECTS		= $(SOURCES:%.c=$(BUILD_DIR)/%.o)

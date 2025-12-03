@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:15 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 18:30:06 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/03 20:23:13 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,7 @@ static int	execute_command_logic(char **args, t_env *env, int input_fd,
 		status = exec_builtin_with_redir(args, env, input_fd, output_fd);
 	else
 	{
-		struct sigaction sa;
-		ft_memset(&sa, 0, sizeof(sa));
-		sa.sa_handler = SIG_IGN;
-		sigemptyset(&sa.sa_mask);
-		sigaction(SIGINT, &sa, NULL);
+		ignore_sigint();
 		pid = fork();
 		if (pid == 0)
 		{
