@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_utils.c                                       :+:      :+:    :+:   */
+/*   read_line_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/03 08:26:22 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:26:26 by jaigonza         ###   ########.fr       */
+/*   Created: 2025/12/03 09:57:21 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 10:01:54 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,44 +38,9 @@ char	*read_line_interactive(int type)
 	char	*buf;
 
 	buf = readline(prompt(type));
-	if (g_status.last_signal == SIGQUIT)
-		(void)0;
-	else if (g_status.last_signal == SIGINT)
-		(void)0;
-	else if (feof(stdin))
+	if (feof(stdin))
 		exit(EXIT_SUCCESS);
 	if (buf && buf[0] != '\0')
 		add_history(buf);
 	return (buf);
-}
-
-/*
-** Separate operators and update line
-*/
-char	*handle_operator_separation(char *line)
-{
-	char	*separated_line;
-
-	separated_line = separate_operators(line);
-	if (separated_line)
-	{
-		free(line);
-		return (separated_line);
-	}
-	return (line);
-}
-
-/*
-** Execute parsed tokens
-*/
-void	execute_and_update_status(t_token *tokens, t_env *env, int status)
-{
-	if (status == 0)
-	{
-		status = bash_execute(tokens, env);
-		update_exit_status(status);
-		main_signal_config();
-	}
-	else
-		update_exit_status(status);
 }

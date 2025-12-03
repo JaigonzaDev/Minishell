@@ -10,8 +10,9 @@ LIB_DIR		= libs/libft
 
 # Source files organized by modules
 SOURCES		= main.c \
-			  main_utils.c \
-			  utils.c \
+			  utils/read_line_utils.c \
+			  utils/process_line_utils.c \
+			  utils/utils.c \
 			  \
 			  tokens/split.c \
 			  tokens/quoting.c \
