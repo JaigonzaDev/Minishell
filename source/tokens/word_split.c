@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   word_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antigravity <antigravity@student.42madrid.com> +#+  +:+
-	+#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 18:00:00 by antigravity       #+#    #+#             */
-/*   Updated: 2025/12/01 18:00:00 by antigravity      ###   ########.fr       */
+/*   Created: 2025/12/03 08:27:00 by jaigonza          #+#    #+#             */
+/*   Updated: 2025/12/03 08:27:16 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

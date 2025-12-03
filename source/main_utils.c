@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 10:00:00 by mergarci          #+#    #+#             */
-/*   Updated: 2025/12/02 10:00:00 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:26:22 by jaigonza          #+#    #+#             */
+/*   Updated: 2025/12/03 08:26:26 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 11:17:15 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/03 19:40:24 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:38:45 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:54 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

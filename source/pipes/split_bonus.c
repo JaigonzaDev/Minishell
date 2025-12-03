@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/03 13:14:28 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/04 18:38:46 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:37:52 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:01 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

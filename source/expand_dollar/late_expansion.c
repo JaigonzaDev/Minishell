@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   late_expansion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 19:30:00 by mergarci          #+#    #+#             */
-/*   Updated: 2025/10/14 20:06:53 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:27:58 by jaigonza          #+#    #+#             */
+/*   Updated: 2025/12/03 08:30:00 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_fd_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 20:34:59 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/16 19:07:50 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:37:58 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:00 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 15:58:21 by mergarci          #+#    #+#             */
-/*   Updated: 2025/08/30 18:54:18 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:36:50 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:36:56 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

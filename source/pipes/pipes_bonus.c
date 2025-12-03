@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 20:21:46 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/16 19:05:43 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:37:44 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:02 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

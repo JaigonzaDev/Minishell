@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 19:30:00 by mergarci          #+#    #+#             */
-/*   Updated: 2025/12/01 19:01:57 by jaigonza         ###   ########.fr       */
+/*   Created: 2025/12/03 08:37:36 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:04 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

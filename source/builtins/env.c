@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 14:48:52 by mergarci          #+#    #+#             */
-/*   Updated: 2025/11/25 16:01:49 by jaigonza         ###   ########.fr       */
+/*   Created: 2025/12/03 08:34:30 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:34:52 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

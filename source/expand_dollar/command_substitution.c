@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 19:00:00 by mergarci          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:22 by jaigonza         ###   ########.fr       */
+/*   Created: 2025/12/03 08:27:39 by jaigonza          #+#    #+#             */
+/*   Updated: 2025/12/03 08:30:03 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-int			g_last_exit_status = 0;
+int		g_last_exit_status = 0;
 
 /*
 ** Execute command and capture output

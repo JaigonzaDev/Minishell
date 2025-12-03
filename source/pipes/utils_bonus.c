@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 12:33:32 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/16 19:06:55 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:37:56 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:00 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	ft_read_heredoc(int fd, char *limit)
 		line = ft_gnl(STDIN_FILENO, NULL);
 		if (!line)
 			break ;
-		if (ft_strncmp(line, limit, limit_len) == 0
-			&& (line[limit_len] == '\0' || line[limit_len] == '\n'))
+		if (ft_strncmp(line, limit, limit_len) == 0 && (line[limit_len] == '\0'
+				|| line[limit_len] == '\n'))
 		{
 			free(line);
 			break ;

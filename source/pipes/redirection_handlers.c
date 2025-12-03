@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_handlers.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antigravity <antigravity@student.42madrid.com> +#+  +:+
-	+#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 18:00:00 by antigravity       #+#    #+#             */
-/*   Updated: 2025/12/01 18:00:00 by antigravity      ###   ########.fr       */
+/*   Created: 2025/12/03 08:37:47 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:02 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/13 12:44:24 by mergarci          #+#    #+#             */
-/*   Updated: 2025/09/13 12:44:25 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:34:39 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:34:50 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

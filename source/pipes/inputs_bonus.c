@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inputs_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 20:42:59 by mergarci          #+#    #+#             */
-/*   Updated: 2025/12/01 19:00:38 by jaigonza         ###   ########.fr       */
+/*   Created: 2025/12/03 08:37:18 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:38:08 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

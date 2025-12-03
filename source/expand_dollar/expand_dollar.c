@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_dollar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 19:00:00 by mergarci          #+#    #+#             */
-/*   Updated: 2025/10/12 19:00:00 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:27:43 by jaigonza          #+#    #+#             */
+/*   Updated: 2025/12/03 08:30:02 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 14:54:16 by mergarci          #+#    #+#             */
-/*   Updated: 2025/08/30 18:00:35 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:29:22 by jaigonza          #+#    #+#             */
+/*   Updated: 2025/12/03 08:29:26 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

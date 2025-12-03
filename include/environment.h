@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 15:58:17 by mergarci          #+#    #+#             */
-/*   Updated: 2025/08/30 18:51:16 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:29:14 by jaigonza          #+#    #+#             */
+/*   Updated: 2025/12/03 08:29:49 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

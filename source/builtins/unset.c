@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 14:47:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/08/30 18:55:37 by mergarci         ###   ########.fr       */
+/*   Created: 2025/12/03 08:34:46 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/03 08:34:48 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
