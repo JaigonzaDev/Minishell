@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:27:09 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:27:11 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:52:46 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	quit_handler(int signum)
 		ft_putstr_fd("Quit: 3\n", STDOUT_FILENO);
 		exit(131);
 	}
-	rl_on_new_line();
-	rl_redisplay();
 }
 
 /*
@@ -59,12 +57,13 @@ void	main_signal_config(void)
 {
 	struct sigaction	sa;
 
+	rl_catch_signals = 0;
 	ft_memset(&sa, 0, sizeof(sa));
 	sa.sa_handler = parent_handler;
 	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGINT, &sa, NULL);
-	sa.sa_handler = SIG_IGN;
+	sa.sa_handler = quit_handler;
 	sigaction(SIGQUIT, &sa, NULL);
 }
 

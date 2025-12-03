@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:15 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:38:09 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:30:06 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,14 @@ int	wait_external_command(pid_t pid)
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == SIGINT)
+			write(1, "\n", 1);
+		else if (WTERMSIG(status) == SIGQUIT)
+			ft_putstr_fd("Quit: 3\n", 1);
+		return (128 + WTERMSIG(status));
+	}
 	return (1);
 }
 
@@ -103,11 +111,22 @@ static int	execute_command_logic(char **args, t_env *env, int input_fd,
 		status = exec_builtin_with_redir(args, env, input_fd, output_fd);
 	else
 	{
+		struct sigaction sa;
+		ft_memset(&sa, 0, sizeof(sa));
+		sa.sa_handler = SIG_IGN;
+		sigemptyset(&sa.sa_mask);
+		sigaction(SIGINT, &sa, NULL);
 		pid = fork();
 		if (pid == 0)
+		{
+			child_signal_config();
 			exec_external_child(args, env, input_fd, output_fd);
+		}
 		else
+		{
 			status = wait_external_command(pid);
+			main_signal_config();
+		}
 	}
 	return (status);
 }
