@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:41 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:38:03 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:03:42 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,21 @@ t_token	get_group_tokens(t_token *tokens, int group)
 		current = current->next;
 	}
 	return (*head.next);
+}
+
+/*
+** Setup child file descriptors
+*/
+void	setup_child_fds(int input_fd, int output_fd)
+{
+	if (input_fd != 0)
+	{
+		dup2(input_fd, STDIN_FILENO);
+		close(input_fd);
+	}
+	if (output_fd != 1)
+	{
+		dup2(output_fd, STDOUT_FILENO);
+		close(output_fd);
+	}
 }

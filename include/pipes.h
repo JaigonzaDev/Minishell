@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 11:17:49 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 11:17:52 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:03:45 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ char	**ft_add_null(char **args);
 void	free_str_array(char **arr);
 int		handle_cmd_not_found(char **args);
 int		handle_permission_denied(char **args, char *path);
+void	ft_print_cmd_error(char *cmd);
+void	setup_child_fds(int input_fd, int output_fd);
 
 char	*get_path_env(char **envp);
 char	*get_path_from_env_list(t_env *env);

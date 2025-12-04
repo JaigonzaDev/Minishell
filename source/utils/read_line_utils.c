@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 09:57:21 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 10:01:54 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:54:25 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*read_line_interactive(int type)
 
 	buf = readline(prompt(type));
 	if (feof(stdin))
-		exit(EXIT_SUCCESS);
+		clean_exit(EXIT_SUCCESS);
 	if (buf && buf[0] != '\0')
 		add_history(buf);
 	return (buf);

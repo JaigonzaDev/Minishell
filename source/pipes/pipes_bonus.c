@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:44 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:38:02 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:54:21 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static pid_t	ft_createfd_fork(int *fd)
 	if (pipe(fd) == -1)
 	{
 		perror("pipe");
-		exit(errno);
+		clean_exit(errno);
 	}
 	return (fork());
 }
@@ -108,7 +108,7 @@ int	ft_pipeline(int *files, char **commands, char **envp)
 		if (pid[i] == 0)
 		{
 			if (handle_child(files, commands, envp, i))
-				exit(EXIT_FAILURE);
+				clean_exit(EXIT_FAILURE);
 		}
 		else
 			ft_parent_fd(fd, prev_pipe);

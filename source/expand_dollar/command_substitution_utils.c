@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_substitution_utils.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:27:36 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:30:04 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:51:08 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	exec_child_process(char *command, t_env *env, int pipefd[2])
 		update_exit_status(status);
 		free_token_list(tokens);
 	}
-	exit(0);
+	clean_exit(0);
 }
 
 /*

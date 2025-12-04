@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:12 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:38:09 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:02:49 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,14 @@ int	handle_permission_denied(char **args, char *path)
 	free(path);
 	free_str_array(args);
 	return (126);
+}
+
+/*
+** Print command error
+*/
+void	ft_print_cmd_error(char *cmd)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(": command not found\n", 2);
 }

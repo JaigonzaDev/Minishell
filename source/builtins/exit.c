@@ -6,12 +6,11 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:34:33 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:34:51 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:58:25 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
-#include "libft.h"
+#include "minishell.h"
 
 /*
 ** Check if exit code is valid
@@ -69,13 +68,9 @@ void	ft_exit(char **args, t_env **environment)
 {
 	int	exit_code;
 
+	(void)environment;
 	exit_code = 0;
 	if (args[1])
 		process_exit_args(args, &exit_code);
-	if (environment != NULL && *environment != NULL)
-	{
-		env_freeall(environment);
-		*environment = NULL;
-	}
-	exit(exit_code);
+	clean_exit(exit_code);
 }
