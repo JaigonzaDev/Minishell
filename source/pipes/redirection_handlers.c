@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:47 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 17:42:18 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:58:12 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,35 @@ int	handle_redirect_append(t_token *current, int *output_fd)
 /*
 ** Handle heredoc redirection
 */
+/*
+** Process heredoc loop
+*/
+static void	process_heredoc_loop(int fd, char *delimiter)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = readline("> ");
+		if (!line)
+			break ;
+		if (ft_strncmp(line, delimiter, ft_strlen(delimiter) + 1) == 0)
+		{
+			free(line);
+			break ;
+		}
+		write(fd, line, ft_strlen(line));
+		write(fd, "\n", 1);
+		free(line);
+	}
+}
+
+/*
+** Handle heredoc redirection
+*/
 int	handle_redirect_heredoc(t_token *current, int *input_fd)
 {
 	int		fd[2];
-	char	*line;
 	char	*delimiter;
 
 	if (pipe(fd) == -1)
@@ -75,25 +100,9 @@ int	handle_redirect_heredoc(t_token *current, int *input_fd)
 		return (1);
 	}
 	delimiter = current->token;
-	while (1)
-	{
-		line = readline("> ");
-		if (!line)
-		{
-			ft_putstr_fd("minishell: warning: here-document delimited by end-of-file (wanted `", 2);
-			ft_putstr_fd(delimiter, 2);
-			ft_putstr_fd("')\n", 2);
-			break ;
-		}
-		if (ft_strncmp(line, delimiter, ft_strlen(delimiter) + 1) == 0)
-		{
-			free(line);
-			break ;
-		}
-		write(fd[1], line, ft_strlen(line));
-		write(fd[1], "\n", 1);
-		free(line);
-	}
+	if (!delimiter)
+		return (1);
+	process_heredoc_loop(fd[1], delimiter);
 	close(fd[1]);
 	if (*input_fd != 0)
 		close(*input_fd);

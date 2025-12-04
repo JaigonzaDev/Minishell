@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_handlers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:28:21 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/04 17:25:45 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:34:35 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	handle_expect_filename(t_token *current, int *state)
 int	handle_expect_delimiter(t_token *current, int *state)
 {
 	if (current->type == E_DELIMITER)
-		*state = E_STATE_EXPECT_FILENAME;
+		*state = E_STATE_EXPECT_ARG;
+	else
+		return (syntax_error(current->token, E_ERROR_UNEXPECTED));
 	return (0);
 }

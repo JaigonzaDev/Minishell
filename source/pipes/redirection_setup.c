@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:50 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 17:44:06 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:44:00 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /*
 ** Process single redirection
 */
-int	process_single_redirection(t_token *prev, t_token *current, int *input_fd,
-		int *output_fd)
+int	process_single_redirection(t_token *prev, t_token *current,
+		int *input_fd, int *output_fd)
 {
 	if (prev->type == E_REDIRECT_IN)
 		return (handle_redirect_in(current, input_fd));

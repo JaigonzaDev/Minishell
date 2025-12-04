@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:28:15 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/04 17:26:22 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:44:02 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int	identify_redirection(char *token)
 /*
 ** Mark redirection file
 */
-static void	mark_redirection_file(t_token *redirect_token, t_token *file_token,
-		int redirect_type)
+static void	mark_redirection_file(t_token *redirect_token,
+		t_token *file_token, int redirect_type)
 {
 	if (!redirect_token || !file_token)
 		return ;
@@ -70,11 +70,7 @@ void	process_redirections(t_token *tokens)
 		if (redirect_type && current->next
 			&& identify_redirection(current->next->token) == 0)
 		{
-			if (redirect_type == E_REDIRECT_HEREDOC && current->next->next)
-				mark_redirection_file(current, current->next->next,
-					redirect_type);
-			else
-				mark_redirection_file(current, current->next, redirect_type);
+			mark_redirection_file(current, current->next, redirect_type);
 			if (!is_operator(*current->next))
 				current = current->next;
 		}

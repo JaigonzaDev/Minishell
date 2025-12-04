@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:15 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 17:42:32 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:58:18 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,70 +88,4 @@ int	wait_external_command(pid_t pid)
 		return (128 + WTERMSIG(status));
 	}
 	return (1);
-}
-
-/*
-** Execute command logic
-*/
-static int	execute_command_logic(char **args, t_env *env, int input_fd,
-		int output_fd)
-{
-	int		status;
-	pid_t	pid;
-
-	status = 0;
-	if (ft_is_builtin(args[0]))
-		status = exec_builtin_with_redir(args, env, input_fd, output_fd);
-	else
-	{
-		ignore_sigint();
-		pid = fork();
-		if (pid == 0)
-		{
-			child_signal_config();
-			exec_external_child(args, env, input_fd, output_fd);
-		}
-		else
-		{
-			status = wait_external_command(pid);
-			main_signal_config();
-		}
-	}
-	return (status);
-}
-
-/*
-** Execute simple command
-*/
-int	execute_simple_command(t_token *tokens, t_env *env)
-{
-	char	**args;
-	int		input_fd;
-	int		output_fd;
-	int		status;
-
-	input_fd = 0;
-	output_fd = 1;
-	if (setup_redirections(tokens, &input_fd, &output_fd))
-		return (1);
-	args = tokens_to_args(tokens);
-	if (!args || !args[0])
-	{
-		if (input_fd != 0)
-		{
-			char	buffer[1024];
-			int		bytes_read;
-
-			while ((bytes_read = read(input_fd, buffer, sizeof(buffer))) > 0)
-				write(output_fd, buffer, bytes_read);
-			close(input_fd);
-			if (output_fd != 1)
-				close(output_fd);
-		}
-		free_args(args);
-		return (0);
-	}
-	status = execute_command_logic(args, env, input_fd, output_fd);
-	free_args(args);
-	return (status);
 }

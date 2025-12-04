@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:26:48 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:27:22 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:44:04 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int	token_needs_splitting(char *str)
 /*
 ** Handle token split
 */
-t_token	*handle_token_split(t_token *current, t_token *new_head, t_token *next)
+t_token	*handle_token_split(t_token *current, t_token *new_head,
+		t_token *next)
 {
 	t_token	*first_split;
 

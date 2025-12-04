@@ -64,6 +64,7 @@ SOURCES		= main.c \
 			  pipes/redirection_handlers.c \
 			  pipes/redirection_setup.c \
 			  pipes/exec_utils.c \
+			  pipes/exec_simple.c \
 			  pipes/pipe_utils.c \
 			  pipes/pipe_exec.c \
 			  pipes/multi_pipe_utils.c \

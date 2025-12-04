@@ -6,12 +6,32 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:39 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 14:54:23 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:42:36 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 #include "pipes.h"
+
+/*
+** Handle input redirection loop
+*/
+static void	handle_input_redirection(int input_fd, int output_fd)
+{
+	char	buffer[1024];
+	int		bytes_read;
+
+	while (1)
+	{
+		bytes_read = read(input_fd, buffer, sizeof(buffer));
+		if (bytes_read <= 0)
+			break ;
+		write(output_fd, buffer, bytes_read);
+	}
+	close(input_fd);
+	if (output_fd != 1)
+		close(output_fd);
+}
 
 /*
 ** Execute pipe command logic
@@ -49,6 +69,8 @@ int	execute_pipe_command(t_token *tokens, t_env *env, int input_fd,
 	args = tokens_to_args(tokens);
 	if (!args || !args[0])
 	{
+		if (input_fd != 0)
+			handle_input_redirection(input_fd, output_fd);
 		free_args(args);
 		clean_exit(0);
 	}
