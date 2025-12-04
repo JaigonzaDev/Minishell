@@ -6,11 +6,12 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:36:50 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:36:56 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:17:34 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "environment.h"
+#include "minishell.h"
 
 /*
 ** Get environment info from string
@@ -77,6 +78,7 @@ void	env_save(char **envp, t_env **my_environment)
 		last = var;
 		i++;
 	}
+	g_status.env_list = *my_environment;
 }
 
 /*

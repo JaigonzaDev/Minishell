@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:27:09 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 18:52:46 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:17:29 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void	quit_handler(int signum)
 	{
 		rl_replace_line("", 0);
 		rl_redisplay();
-		ft_putstr_fd("Quit: 3\n", STDOUT_FILENO);
-		exit(131);
+		clean_exit(131);
 	}
 }
 

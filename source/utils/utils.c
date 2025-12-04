@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:26:16 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:26:27 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:17:31 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	debug(t_token *tokens)
 const char	*prompt(int type)
 {
 	if (type == E_PROMPT_MAIN)
-		return ("bash-mini$ ");
+		return ("minishell$ ");
 	else if (type == E_PROMPT_SQUOTE)
 		return ("squote> ");
 	else if (type == E_PROMPT_DQUOTE)
@@ -42,4 +42,21 @@ const char	*prompt(int type)
 	else if (type == E_PROMPT_BQUOTE)
 		return ("bquote> ");
 	return ("");
+}
+
+void	global_init(void)
+{
+	g_status.last_exit_status = 0;
+	g_status.g_env_copy = NULL;
+	g_status.env_count = 0;
+	g_status.env_list = NULL;
+}
+
+void	clean_exit(int status)
+{
+	if (g_status.env_list)
+		env_freeall(&g_status.env_list);
+	env_free_simple();
+	rl_clear_history();
+	exit(status);
 }

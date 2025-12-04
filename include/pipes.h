@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 00:00:00 by minishell         #+#    #+#             */
-/*   Updated: 2025/12/03 08:29:51 by jaigonza         ###   ########.fr       */
+/*   Created: 2025/12/04 11:17:49 by cinaquiz          #+#    #+#             */
+/*   Updated: 2025/12/04 11:17:52 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

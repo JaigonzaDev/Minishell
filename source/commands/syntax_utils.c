@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza cinaquiz <jaigonza@student.42m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:28:24 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:29:54 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 10:53:32 by jaigonza ci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	syntax_error(char *token_value, int type)
 {
 	if (type == E_ERROR_UNEXPECTED)
 	{
-		fprintf(stderr, "minishell: syntax error near unexpected token `%s'\n",
+		printf("minishell: syntax error near unexpected token `%s'\n",
 			token_value);
 		return (2);
 	}
 	else if (type == E_ERROR_MISSING_FILE)
 	{
-		fprintf(stderr, "minishell: %s: No such File or Directory \n",
+		printf("minishell: %s: No such File or Directory \n",
 			token_value);
 		return (1);
 	}

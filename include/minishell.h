@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:29:03 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 20:24:46 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:18:21 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_global
 	int		exit_flag;
 	char	**g_env_copy;
 	int		env_count;
+	t_env	*env_list;
 }	t_global;
 
 extern t_global	g_status;
@@ -179,5 +180,7 @@ int			handle_expect_arg(t_token *current, int *state);
 int			handle_expect_filename(t_token *current, int *state);
 int			handle_expect_delimiter(t_token *current, int *state);
 void		ignore_sigint(void);
+void		global_init(void);
+void		clean_exit(int status);
 
 #endif

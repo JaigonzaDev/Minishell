@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:26:06 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 19:40:49 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:34:45 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	env = NULL;
 	main_signal_config();
-	rl_catch_signals = 0;
-	g_status.last_exit_status = 0;
-	g_status.g_env_copy = NULL;
-	g_status.env_count = 0;
+	global_init();
 	env_save(envp, &env);
 	while (1)
 	{
@@ -88,6 +85,6 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 		process_line(line, env);
 	}
-	env_freeall(&env);
+	clean_exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
