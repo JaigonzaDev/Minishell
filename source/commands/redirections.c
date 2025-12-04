@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:28:15 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:29:57 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:26:22 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	mark_redirection_file(t_token *redirect_token, t_token *file_token,
 	if (!is_operator(*file_token))
 	{
 		file_token->type = E_FILE;
+		if (redirect_token->type == E_REDIRECT_HEREDOC)
+			file_token->type = E_DELIMITER;
 		if ((redirect_type == E_REDIRECT_OUT)
 			|| (redirect_type == E_REDIRECT_APPEND))
 			file_token->exec_group.io = E_STDOUT;

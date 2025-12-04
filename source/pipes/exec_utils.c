@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:15 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 15:03:47 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:42:32 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,17 @@ int	execute_simple_command(t_token *tokens, t_env *env)
 	args = tokens_to_args(tokens);
 	if (!args || !args[0])
 	{
+		if (input_fd != 0)
+		{
+			char	buffer[1024];
+			int		bytes_read;
+
+			while ((bytes_read = read(input_fd, buffer, sizeof(buffer))) > 0)
+				write(output_fd, buffer, bytes_read);
+			close(input_fd);
+			if (output_fd != 1)
+				close(output_fd);
+		}
 		free_args(args);
 		return (0);
 	}

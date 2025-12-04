@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:29:03 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/04 14:54:27 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:25:26 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ typedef enum e_type
 	E_REDIRECT_APPEND,
 	E_REDIRECT_HEREDOC,
 	E_PIPE,
-	E_REDIRECT
+	E_REDIRECT,
+	E_DELIMITER
 }	t_type;
 
 typedef enum e_expect

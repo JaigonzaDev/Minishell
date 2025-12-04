@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:50 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:38:01 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:44:06 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	setup_redirections(t_token *tokens, int *input_fd, int *output_fd)
 	prev = NULL;
 	while (current)
 	{
-		if (current->type == E_FILE && prev)
+		if ((current->type == E_FILE || current->type == E_DELIMITER) && prev)
 		{
 			if (process_single_redirection(prev, current, input_fd, output_fd))
 				return (1);

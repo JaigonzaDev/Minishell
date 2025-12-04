@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:28:21 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:29:55 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:25:45 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	handle_expect_cmd(t_token *current, int *state)
 {
 	if (is_word(current->type))
 		*state = E_STATE_EXPECT_ARG;
+	else if (is_redirection(*current) && current->type == E_REDIRECT_HEREDOC)
+		*state = E_STATE_EXPECT_DELIMITER;
 	else if (is_redirection(*current))
 		*state = E_STATE_EXPECT_FILENAME;
 	else if (current->type == E_PIPE)
@@ -71,7 +73,7 @@ int	handle_expect_filename(t_token *current, int *state)
 */
 int	handle_expect_delimiter(t_token *current, int *state)
 {
-	if (is_word(current->type))
+	if (current->type == E_DELIMITER)
 		*state = E_STATE_EXPECT_FILENAME;
 	return (0);
 }

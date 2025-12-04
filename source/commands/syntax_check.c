@@ -6,7 +6,7 @@
 /*   By: jaigonza <jaigonza@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:28:18 by jaigonza          #+#    #+#             */
-/*   Updated: 2025/12/03 08:29:56 by jaigonza         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:29:32 by jaigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,26 @@ static int	process_state(t_token *current, int *state)
 */
 int	correct_syntax(t_token *tokens)
 {
-	t_token	*current;
-	int		state;
-	int		ret;
+    t_token	*current;
+    t_token	*last_token;
+    int		state;
+    int		ret;
 
-	current = tokens;
-	state = E_STATE_EXPECT_CMD;
-	if (current == NULL || current->token == NULL || *current->token == '\0')
-		return (0);
-	while (current != NULL)
-	{
-		ret = process_state(current, &state);
-		if (ret != 0)
-			return (ret);
-		current = current->next;
-	}
-	if (state == E_STATE_EXPECT_FILENAME || state == E_STATE_EXPECT_CMD)
-		return (syntax_error("newline", E_ERROR_UNEXPECTED));
-	return (0);
+    current = tokens;
+    last_token = NULL;
+    state = E_STATE_EXPECT_CMD;
+    if (current == NULL || current->token == NULL || *current->token == '\0')
+        return (0);
+    while (current != NULL)
+    {
+        ret = process_state(current, &state);
+        if (ret != 0)
+            return (ret);
+        last_token = current; // Guardamos el último token procesado
+        current = current->next;
+    }
+    if ((state == E_STATE_EXPECT_FILENAME && last_token->type != E_DELIMITER) 
+		|| state == E_STATE_EXPECT_CMD)
+        return (syntax_error("newline", E_ERROR_UNEXPECTED));
+    return (0);
 }
