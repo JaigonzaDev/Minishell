@@ -50,6 +50,7 @@ static void	process_line(char *line, t_env *env)
 {
 	t_token	*tokens;
 	int		status;
+	char	*line_copy;
 
 	if (line[0] == '#')
 	{
@@ -57,7 +58,9 @@ static void	process_line(char *line, t_env *env)
 		return ;
 	}
 	line = handle_operator_separation(line);
+	line_copy = line;
 	tokens = bash_split(&line, env);
+	free(line_copy);
 	tokens = apply_word_splitting(tokens);
 	status = parse_commands_new(&tokens);
 	execute_and_update_status(tokens, env, status);
