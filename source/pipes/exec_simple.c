@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 18:55:00 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 18:51:48 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/05 06:30:29 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	execute_command_logic(char **args, t_env *env, int input_fd,
 		status = exec_builtin_with_redir(args, env, input_fd, output_fd);
 	else
 	{
-		ignore_sigint();
+		ignore_exec_signals();
 		pid = fork();
 		if (pid == 0)
 		{

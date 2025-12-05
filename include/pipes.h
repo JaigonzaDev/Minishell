@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 11:17:49 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/04 15:03:45 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/05 06:32:31 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ void	setup_child_fds(int input_fd, int output_fd);
 char	*get_path_env(char **envp);
 char	*get_path_from_env_list(t_env *env);
 char	*get_path_from_env_simple(void);
+
+void	ignore_exec_signals(void);
 
 #endif

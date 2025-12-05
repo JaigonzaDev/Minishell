@@ -6,7 +6,7 @@
 /*   By: cinaquiz <cinaquiz@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 08:37:24 by cinaquiz          #+#    #+#             */
-/*   Updated: 2025/12/03 08:38:07 by cinaquiz         ###   ########.fr       */
+/*   Updated: 2025/12/05 06:32:29 by cinaquiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ int	execute_multiple_pipes(t_token *tokens, t_env *env, int pipe_count)
 		ctx.i++;
 	}
 	close_pipes(ctx.pipes, pipe_count);
+	ignore_exec_signals();
 	status = wait_children(pids, pipe_count);
+	main_signal_config();
 	free(pids);
 	return (status);
 }
