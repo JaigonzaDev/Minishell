@@ -145,6 +145,7 @@ int			ft_putstr(char *s, char **buf);
 int			ft_putchar(char c, char **s);
 void		main_signal_config(void);
 void		child_signal_config(void);
+void		heredoc_signal_config(void);
 void		child_handler(int signum);
 void		parent_handler(int signum);
 const char	*prompt(int type);

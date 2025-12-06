@@ -77,7 +77,10 @@ int	execute_simple_command(t_token *tokens, t_env *env)
 
 	input_fd = 0;
 	output_fd = 1;
-	if (setup_redirections(tokens, &input_fd, &output_fd))
+	status = setup_redirections(tokens, &input_fd, &output_fd);
+	if (status == 130)
+		return (130);
+	if (status != 0)
 		return (1);
 	args = tokens_to_args(tokens);
 	if (!args || !args[0])

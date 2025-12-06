@@ -31,6 +31,7 @@ SOURCES		= main.c \
 			  commands/syntax_check.c \
 			  \
 			  signals/config.c \
+			  signals/heredoc_signal.c \
 			  \
 			  expand_dollar/expand_dollar.c \
 			  expand_dollar/command_substitution.c \
@@ -62,6 +63,7 @@ SOURCES		= main.c \
 			  pipes/path_utils.c \
 			  pipes/args_utils.c \
 			  pipes/redirection_handlers.c \
+			  pipes/heredoc_utils.c \
 			  pipes/redirection_setup.c \
 			  pipes/exec_utils.c \
 			  pipes/exec_simple.c \

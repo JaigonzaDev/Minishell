@@ -56,6 +56,7 @@ int		handle_redirect_in(t_token *current, int *input_fd);
 int		handle_redirect_out(t_token *current, int *output_fd);
 int		handle_redirect_append(t_token *current, int *output_fd);
 int		handle_redirect_heredoc(t_token *current, int *input_fd);
+int		process_heredoc_loop(int fd, char *delimiter);
 int		process_single_redirection(t_token *prev, t_token *current,
 			int *input_fd, int *output_fd);
 int		exec_builtin_with_redir(char **args, t_env *env, int input_fd,

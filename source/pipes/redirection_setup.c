@@ -18,6 +18,8 @@
 int	process_single_redirection(t_token *prev, t_token *current,
 		int *input_fd, int *output_fd)
 {
+	int	status;
+
 	if (prev->type == E_REDIRECT_IN)
 		return (handle_redirect_in(current, input_fd));
 	else if (prev->type == E_REDIRECT_OUT)
@@ -25,7 +27,12 @@ int	process_single_redirection(t_token *prev, t_token *current,
 	else if (prev->type == E_REDIRECT_APPEND)
 		return (handle_redirect_append(current, output_fd));
 	else if (prev->type == E_REDIRECT_HEREDOC)
-		return (handle_redirect_heredoc(current, input_fd));
+	{
+		status = handle_redirect_heredoc(current, input_fd);
+		if (status == 130)
+			return (130);
+		return (status);
+	}
 	return (0);
 }
 
@@ -36,6 +43,7 @@ int	setup_redirections(t_token *tokens, int *input_fd, int *output_fd)
 {
 	t_token	*current;
 	t_token	*prev;
+	int		status;
 
 	current = tokens;
 	prev = NULL;
@@ -43,8 +51,10 @@ int	setup_redirections(t_token *tokens, int *input_fd, int *output_fd)
 	{
 		if ((current->type == E_FILE || current->type == E_DELIMITER) && prev)
 		{
-			if (process_single_redirection(prev, current, input_fd, output_fd))
-				return (1);
+			status = process_single_redirection(prev, current, input_fd,
+					output_fd);
+			if (status != 0)
+				return (status);
 		}
 		prev = current;
 		current = current->next;

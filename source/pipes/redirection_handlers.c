@@ -64,35 +64,13 @@ int	handle_redirect_append(t_token *current, int *output_fd)
 ** Handle heredoc redirection
 */
 /*
-** Process heredoc loop
-*/
-static void	process_heredoc_loop(int fd, char *delimiter)
-{
-	char	*line;
-
-	while (1)
-	{
-		line = readline("> ");
-		if (!line)
-			break ;
-		if (ft_strncmp(line, delimiter, ft_strlen(delimiter) + 1) == 0)
-		{
-			free(line);
-			break ;
-		}
-		write(fd, line, ft_strlen(line));
-		write(fd, "\n", 1);
-		free(line);
-	}
-}
-
-/*
 ** Handle heredoc redirection
 */
 int	handle_redirect_heredoc(t_token *current, int *input_fd)
 {
 	int		fd[2];
 	char	*delimiter;
+	int		cancelled;
 
 	if (pipe(fd) == -1)
 	{
@@ -102,8 +80,13 @@ int	handle_redirect_heredoc(t_token *current, int *input_fd)
 	delimiter = current->token;
 	if (!delimiter)
 		return (1);
-	process_heredoc_loop(fd[1], delimiter);
+	cancelled = process_heredoc_loop(fd[1], delimiter);
 	close(fd[1]);
+	if (cancelled)
+	{
+		close(fd[0]);
+		return (130);
+	}
 	if (*input_fd != 0)
 		close(*input_fd);
 	*input_fd = fd[0];

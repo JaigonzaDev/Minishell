@@ -55,7 +55,7 @@ int	correct_syntax(t_token *tokens)
 		current = current->next;
 	}
 	if ((state == E_STATE_EXPECT_FILENAME && last_token->type != E_DELIMITER)
-		|| state == E_STATE_EXPECT_CMD)
+		|| state == E_STATE_EXPECT_CMD || state == E_STATE_EXPECT_DELIMITER)
 		return (syntax_error("newline", E_ERROR_UNEXPECTED));
 	return (0);
 }
