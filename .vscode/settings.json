@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"builtins.h": "c"
-	},
-	"[c]": {
-		"editor.defaultFormatter": "keyhr.42-c-format",
-		"editor.formatOnSave": false
-	}
-}
